@@ -14,7 +14,7 @@
  * @param itm The item being returned by the customer.
  */
 RestockCommand::RestockCommand(CustomerID cid, Item itm)
-	: tx_customer_id{std::move(cid)}, tx_item{std::move(item)}
+	: tx_customer_id{std::move(cid)}, tx_item{std::move(itm)}
 {
 }
 
