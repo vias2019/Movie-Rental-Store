@@ -5,10 +5,16 @@
 
 #include <utility>	// std::move
 
-#include "borrow_command.hpp"
+#include "borrow_command.h"
 
-BorrowCommand::BorrowCommand(CustomerID cid, Item item)
-	: customer_id{std::move(cid)}, item{std::move(item)}
+/**
+ * Construct a borrow command object.
+ *
+ * @param cid The customer id of the customer borrowing the item.
+ * @param itm The item the customer wishes to borrow.
+ */
+BorrowCommand::BorrowCommand(CustomerID cid, Item itm)
+	: tx_customer_id{std::move(cid)}, tx_item{std::move(itm)}
 {
 }
 
@@ -19,6 +25,7 @@ BorrowCommand::BorrowCommand(CustomerID cid, Item item)
  */
 void BorrowCommand::runWith(RentalSystem& rentalSystem) override
 {
+	rentalSystem.borrow(*this);
 }
 
 /**
@@ -28,7 +35,7 @@ void BorrowCommand::runWith(RentalSystem& rentalSystem) override
  */
 CustomerID BorrowCommand::customerID() const override
 {
-	return customer_id;
+	return tx_customer_id;
 }
 
 /**
@@ -38,5 +45,5 @@ CustomerID BorrowCommand::customerID() const override
  */
 Item BorrowCommand::item() const override
 {
-	return item;
+	return tx_item;
 }

@@ -1,14 +1,14 @@
 /**
- * @file borrow_command.hpp
+ * @file borrow_command.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_COMMAND_BORROW_HPP
-#define RENTAL_SYSTEM_COMMAND_BORROW_HPP
+#ifndef BORROW_COMMAND_H
+#define BORROW_COMMAND_H
 
-#include "customer_id.hpp"
-#include "item.hpp"
-#include "transaction.hpp"
+#include "customer_id.h"
+#include "item.h"
+#include "transaction.h"
 
 /**
  * Concrete transaction command representing a customer borrowing an item from
@@ -17,7 +17,7 @@
 class BorrowCommand : public Transaction
 {
 public:
-	BorrowCommand(CustomerID cid, Item item);
+	BorrowCommand(CustomerID cid, Item itm);
 
 	// Command interface.
 	void runWith(RentalSystem& rentalSystem) override;
@@ -27,8 +27,8 @@ public:
 	Item item() const override;
 
 private:
-	CustomerID customer_id;
-	Item item;
+	CustomerID tx_customer_id;
+	Item tx_item;
 };
 
 #endif
