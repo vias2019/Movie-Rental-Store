@@ -1,13 +1,13 @@
 /**
- * @file history_command.hpp
+ * @file history_command.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_COMMAND_HISTORY_HPP
-#define RENTAL_SYSTEM_COMMAND_HISTORY_HPP
+#ifndef HISTORY_COMMAND_H
+#define HISTORY_COMMAND_H
 
-#include "customer_id.hpp"
-#include "command.hpp"
+#include "customer_id.h"
+#include "command.h"
 
 /**
  * Concrete command for reporting a customer's transaction history.

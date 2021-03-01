@@ -5,8 +5,13 @@
 
 #include <utility>	// std::move
 
-#include "history_command.hpp"
+#include "history_command.h"
 
+/**
+ * Construct a history command object.
+ *
+ * @param cid The customer id of the customer whose history should be reported.
+ */
 HistoryCommand::HistoryCommand(CustomerID cid): customer_id{std::move(cid)}
 {
 }
@@ -18,4 +23,5 @@ HistoryCommand::HistoryCommand(CustomerID cid): customer_id{std::move(cid)}
  */
 void HistoryCommand::runWith(RentalSystem& rentalSystem) override
 {
+	rentalSystem.history(customer_id);
 }
