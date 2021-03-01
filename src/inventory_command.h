@@ -1,14 +1,14 @@
 /**
- * @file inventory_command.hpp
+ * @file inventory_command.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_COMMAND_INVENTORY_HPP
-#define RENTAL_SYSTEM_COMMAND_INVENTORY_HPP
+#ifndef INVENTORY_COMMAND_H
+#define INVENTORY_COMMAND_H
 
-#include "customer_id.hpp"
-#include "item.hpp"
-#include "command.hpp"
+#include "customer_id.h"
+#include "item.h"
+#include "command.h"
 
 /**
  * Concrete command for reporting the rental system's inventory.

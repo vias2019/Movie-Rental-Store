@@ -3,7 +3,7 @@
  * @author Dominic Ewing
  */
 
-#include "inventory_command.hpp"
+#include "inventory_command.h"
 
 /**
  * Ask the rental system to report it's inventory to the user.
@@ -12,4 +12,5 @@
  */
 void InventoryCommand::runWith(RentalSystem& rentalSystem) override
 {
+	rentalSystem.inventory();
 }
