@@ -1,14 +1,14 @@
 /**
- * @file restock_command.hpp
+ * @file restock_command.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_COMMAND_RESTOCK_HPP
-#define RENTAL_SYSTEM_COMMAND_RESTOCK_HPP
+#ifndef RESTOCK_RESTOCK_H
+#define RESTOCK_RESTOCK_H
 
-#include "customer_id.hpp"
-#include "item.hpp"
-#include "transaction.hpp"
+#include "customer_id.h"
+#include "item.h"
+#include "transaction.h"
 
 /**
  * Concrete transaction command representing a customer returning an item to
@@ -17,7 +17,7 @@
 class RestockCommand : public Transaction
 {
 public:
-	RestockCommand(CustomerID cid, Item item);
+	RestockCommand(CustomerID cid, Item itm);
 
 	// Command interface.
 	void runWith(RentalSystem& rentalSystem) override;
@@ -27,8 +27,8 @@ public:
 	Item item() const override;
 
 private:
-	CustomerID customer_id;
-	Item item;
+	CustomerID tx_customer_id;
+	Item tx_item;
 };
 
 #endif
