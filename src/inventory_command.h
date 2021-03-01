@@ -6,8 +6,6 @@
 #ifndef INVENTORY_COMMAND_H
 #define INVENTORY_COMMAND_H
 
-#include "customer_id.h"
-#include "item.h"
 #include "command.h"
 
 /**
