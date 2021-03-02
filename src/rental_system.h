@@ -3,8 +3,8 @@
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_RENTAL_SYSTEM_HPP
-#define RENTAL_SYSTEM_RENTAL_SYSTEM_HPP
+#ifndef RENTAL_SYSTEM_H
+#define RENTAL_SYSTEM_H
 
 #include <memory>	// Use smart pointers for owned memeory.
 
