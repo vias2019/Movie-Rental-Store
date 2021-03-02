@@ -3,7 +3,7 @@
  * @author Dominic Ewing
  */
 
-#include "command_file.hpp"
+#include "command_file.h"
 
 explicit CommandFile::CommandFile(std::string filePath)
 	: file_path{std::move(filePath)}

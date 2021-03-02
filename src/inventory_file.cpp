@@ -3,7 +3,7 @@
  * @author Dominic Ewing
  */
 
-#include "inventory_file.hpp"
+#include "inventory_file.h"
 
 explicit InventoryFile::InventoryFile(std::string filePath)
 	: file_path{std::move(filePath)}

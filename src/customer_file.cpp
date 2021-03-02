@@ -3,7 +3,7 @@
  * @author Dominic Ewing
  */
 
-#include "customer_file.hpp"
+#include "customer_file.h"
 
 explicit CustomerFile::CustomerFile(std::string filePath)
 	: file_path{std::move(filePath)}
