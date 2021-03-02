@@ -6,7 +6,7 @@
 #ifndef RENTAL_SYSTEM_ERROR_H
 #define RENTAL_SYSTEM_ERROR_H
 
-#include <exception>	// Inheriting from std::exception
+#include <exception>	// Inheriting from std::runtime_error
 
 /**
  * Basic error class for reporting failed rental operations.
