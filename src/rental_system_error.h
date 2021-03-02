@@ -3,8 +3,8 @@
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_RENTAL_SYSTEM_ERROR
-#define RENTAL_SYSTEM_RENTAL_SYSTEM_ERROR
+#ifndef RENTAL_SYSTEM_ERROR_H
+#define RENTAL_SYSTEM_ERROR_H
 
 #include <exception>	// Inheriting from std::exception
 
