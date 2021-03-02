@@ -5,6 +5,11 @@
 
 #include "inventory_file.h"
 
+/**
+ * Construct an inventory file object.
+ *
+ * @param filePath Path to the inventory file.
+ */
 explicit InventoryFile::InventoryFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {

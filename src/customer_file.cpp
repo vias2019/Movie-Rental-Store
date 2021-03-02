@@ -5,6 +5,11 @@
 
 #include "customer_file.h"
 
+/**
+ * Construct a customer file object.
+ *
+ * @param filePath Path to the customer file.
+ */
 explicit CustomerFile::CustomerFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {

@@ -5,6 +5,11 @@
 
 #include "command_file.h"
 
+/**
+ * Construct a command file object.
+ *
+ * @param filePath Path to the command file.
+ */
 explicit CommandFile::CommandFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
