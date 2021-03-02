@@ -1,5 +1,5 @@
 /**
- * @file rental_system_error.hpp
+ * @file rental_system_error.h
  * @author Dominic Ewing
  */
 
