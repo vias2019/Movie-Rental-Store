@@ -8,6 +8,13 @@
 #include "rental_system.h"
 #include "rental_system_error.h"
 
+/**
+ * Construct a rental system object.
+ *
+ * @param inv The inventory of the rental system.
+ * @param clients The clientele of the rental system
+ * @param disp The display where rental system output should be sent.
+ */
 RentalSystem(Inventory inv, Clientele clients, std::unique_ptr<Display> disp)
 	: inventory{std::move(inv)},
 	customers{std::move(clients)},
