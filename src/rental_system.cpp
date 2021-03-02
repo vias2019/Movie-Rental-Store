@@ -57,8 +57,13 @@ void RentalSystem::restock(Transaction command)
 		auto& customer = customers.findCustomer(command.customerID());
 		auto& item = customer.restock(command.item());
 
-		// What is the API to roll back the customer.restock() should
-		// inventory.restock() fail?
+		// In its current iteration, all inventory::restock() does is
+		// call item.restock(), which simply increments it's counter
+		// and is a noexcept operation. Therefore, as long as the item
+		// refernce is valid, this call cannot fail in a recoverable
+		// way. If this changes in the future, the interface may have
+		// to change to support a proper rollback or atomic commit
+		// operation.
 		inventory.restock(item);
 	}
 	catch (const RentalSystemError& error)
