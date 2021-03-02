@@ -3,8 +3,8 @@
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_DISPLAY_HPP
-#define RENTAL_SYSTEM_DISPLAY_HPP
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
 #include "item.h"
 #include "rental_system_error.h"
