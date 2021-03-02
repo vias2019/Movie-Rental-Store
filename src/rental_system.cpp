@@ -5,8 +5,8 @@
 
 #include <utility>	// std::move
 
-#include "rental_system.hpp"
-#include "rental_system_error.hpp"
+#include "rental_system.h"
+#include "rental_system_error.h"
 
 RentalSystem(Inventory inv, Clientele clients, std::unique_ptr<Display> disp)
 	: inventory{std::move(inv)},
