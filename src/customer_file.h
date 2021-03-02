@@ -1,16 +1,16 @@
 /**
- * @file customer_file.hpp
+ * @file customer_file.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_CUSTOMER_FILE_HPP
-#ifndef RENTAL_SYSTEM_CUSTOMER_FILE_HPP
+#ifndef CUSTOMER_FILE_H
+#ifndef CUSTOMER_FILE_H
 
 #include <string>
 #include <vector>
 
-#include "clientele.hpp"
-#include "rental_system_error.hpp"
+#include "clientele.h"
+#include "rental_system_error.h"
 
 /**
  * Represents an customer file. The file can be parsed to create a Clientele

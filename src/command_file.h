@@ -1,16 +1,16 @@
 /**
- * @file command_file.hpp
+ * @file command_file.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_COMMAND_FILE_HPP
-#ifndef RENTAL_SYSTEM_COMMAND_FILE_HPP
+#ifndef COMMAND_FILE_H
+#ifndef COMMAND_FILE_H
 
 #include <string>
 #include <vector>
 
-#include "command.hpp"
-#include "rental_system_error.hpp"
+#include "command.h"
+#include "rental_system_error.h"
 
 /**
  * Represents an command file. The file can be parsed to create a list of

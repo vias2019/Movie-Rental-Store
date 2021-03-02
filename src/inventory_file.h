@@ -1,16 +1,16 @@
 /**
- * @file inventory_file.hpp
+ * @file inventory_file.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_INVENTORY_FILE_HPP
-#ifndef RENTAL_SYSTEM_INVENTORY_FILE_HPP
+#ifndef INVENTORY_FILE_H
+#ifndef INVENTORY_FILE_H
 
 #include <string>
 #include <vector>
 
-#include "inventory.hpp"
-#include "rental_system_error.hpp"
+#include "inventory.h"
+#include "rental_system_error.h"
 
 /**
  * Represents an inventory file. The file can be parsed to create an inventory
