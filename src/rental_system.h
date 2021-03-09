@@ -9,6 +9,8 @@
 #include <memory>	// Use smart pointers for owned memeory.
 
 #include "customer_id.h"
+#include "hashtable.h"
+#include "inventory.h"
 #include "transaction.h"
 #include "display.h"
 
@@ -29,7 +31,7 @@ public:
 
 private:
 	Inventory inventory;
-	Clientele customers;
+	HashTable customers;
 
 	// Display is abstract. Use unique_ptr to allow polymorphism while still
 	// having memory safety.
