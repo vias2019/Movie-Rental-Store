@@ -1,10 +1,10 @@
 /**
- * @file customer_id.hpp
+ * @file customer_id.h
  * @author Dominic Ewing
  */
 
-#ifndef RENTAL_SYSTEM_CUSTOMER_ID_HPP
-#define RENTAL_SYSTEM_CUSTOMER_ID_HPP
+#ifndef CUSTOMER_ID_H
+#define CUSTOMER_ID_H
 
 /**
  * Represents a customer ID number in the system.
