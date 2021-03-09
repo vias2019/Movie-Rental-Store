@@ -12,7 +12,7 @@
  * Abstract base class for movies
  */
 class Movie {
-    virtual int compare(const Movie &) = 0;     // compares two movies
+    virtual int compare(const Movie &) const = 0;       // compares two movies
 };
 
 #endif

@@ -13,9 +13,11 @@ using namespace std;
  * A class for drama movies in the rental movie store
  */
 class DramaMovie : public Movie {
+    friend ostream& operator<<(ostream &, const DramaMovie &);  // displays movie
+
 public:
     DramaMovie(string, string, string, int);        // constructor
-    int compare(const Movie &);                     // compares two movies
+    int compare(const Movie &) const override;      // compares two movies
 
 private:
     string genre;

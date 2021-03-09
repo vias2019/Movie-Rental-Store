@@ -13,9 +13,11 @@ using namespace std;
  * A class for classic movies in the rental movie store
  */
 class ClassicMovie : public Movie {
+    friend ostream& operator<<(ostream &, const ClassicMovie &);    // displays movie
+
 public:
     ClassicMovie(string, string, string, int, int, string);     // constructor
-    int compare(const Movie &);                         // compares two movies
+    int compare(const Movie &) const override;                  // compares two movies
 
 private:
     string genre;
