@@ -6,7 +6,9 @@
 #ifndef DVD_H
 #define DVD_H
 
-// includes TBD
+#include "item.h"
+#include "movie.h"
+using namespace std;
 
 /**
  * A class for DVD media stocked in the rental store inventory

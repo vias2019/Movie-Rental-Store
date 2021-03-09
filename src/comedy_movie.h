@@ -6,7 +6,7 @@
 #ifndef COMEDY_MOVIE_H
 #define COMEDY_MOVIE_H
 
-// includes TBD
+#include "movie.h"
 using namespace std;
 
 /**
