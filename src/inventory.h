@@ -6,7 +6,14 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-// includes TBD
+#include "item.h"
+#include "dvd.h"
+#include "movie.h"
+#include "comedy_movie.h"
+#include "drama_movie.h"
+#include "classic_movie.h"
+#include <set>
+
 
 /**
  * A class for managing the inventory of a movie rental store

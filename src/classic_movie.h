@@ -6,7 +6,7 @@
 #ifndef CLASSIC_MOVIE_H
 #define CLASSIC_MOVIE_H
 
-// includes TBD
+#include "movie.h"
 using namespace std;
 
 /**
