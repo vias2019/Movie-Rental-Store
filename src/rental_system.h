@@ -8,9 +8,9 @@
 
 #include <memory>	// Use smart pointers for owned memeory.
 
-#include "customer_id.hpp"
-#include "transaction.hpp"
-#include "display.hpp"
+#include "customer_id.h"
+#include "transaction.h"
+#include "display.h"
 
 /**
  * Main rental system class coordinating the inventory and customer data stores,

@@ -6,6 +6,8 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
+#include "rental_system.h"
+
 /**
  * Abstract base class for all rental system commands.
  */
