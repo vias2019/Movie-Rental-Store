@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "hashTable.h"
+
+#include "hashtable.h"
+
 using namespace std;
 
 
