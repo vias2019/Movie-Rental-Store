@@ -1,29 +1,30 @@
 #pragma once
-#include <iostream>
+#include <string>
 #include <vector>
 
+#include "customer.h"
 using namespace std;
 
 class Customer {
 public:
-   // Constructor
+   int key;
+   string firstName;
+   string lastName;
+   int indexN;
+
+   struct History {
+      char type = '\0';
+      int quantity = 0;
+      int* movieCode;
+   };
+
+   vector <Customer::History> history;
+   
+   //a default constructor
    Customer();
 
-   //Destructor
-   ~Customer();
+   // a constructor
+   Customer(int keyInput, string lastNameInput, string firstNameInput);
 
-   // To save a customer data to a hash table
-   void saveCustData();
-
-   // Print transaction history for a selected customer (list has the following information for every transaction: return R/B, quantity, Movie ID pointer)
-   vector<Command> PrintHistory(int cust id);
-
-   // Return function checks if a customer has borrowed the item and quantity agrees. If it is true, the system records transaction in subvector storing the following data: [[R, 2, “War!!”], ..].
-   item& Return(Command command, item& item);
-
-   // The function records transaction in sub-vector storing the following data: [[B, 2, “War!!”], ..].
-   void Borrow(Command command, item& item);
-
-   // Print history for a specific customer, return a vector consisting of subvectors with the following information: Type of transaction, quantity, and movie ID pointer.
-   vector<Command> printRecords();
+   //no need for a destructor??????????????????????????
 };
