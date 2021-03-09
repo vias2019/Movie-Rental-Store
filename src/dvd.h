@@ -17,7 +17,8 @@ class DVD : public Item {
     friend ostream& operator<<(ostream &, const DVD &);     // displays DVD movie & stock
 
 public:
-    DVD(Movie, int = 0, int = 0);   // constructor
+    DVD(Movie &, int = 0, int = 0);   // constructor
+    ~DVD();                         // destructor
     void addStock(int) override;    // adds total stock to inventory
     void borrow() override;         // attempts to check out DVD for a customer, decreasing stock
     void restock() override;        // returns a borrowed DVD, increasing stock
@@ -26,9 +27,9 @@ public:
     int compare(const DVD &);
 
 private:
-    int totalStock;         // total stock of DVD in inventory
-    int availableStock;     // currently available stock of DVD
-    Movie movie;            // the movie on the DVD
+    int totalStock;                 // total stock of DVD in inventory
+    int availableStock;             // currently available stock of DVD
+    shared_ptr<Movie> movie;        // the movie on the DVD
 };
 
 #endif
