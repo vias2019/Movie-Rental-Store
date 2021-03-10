@@ -12,6 +12,8 @@
 #include "rental_system_error.h"
 #include "transaction.h"
 
+class Transaction;	// Forward declaration.
+
 /**
  * Abstract base class for objects displaying errors and output to the user.
  */

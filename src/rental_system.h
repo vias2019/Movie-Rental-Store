@@ -14,6 +14,8 @@
 #include "transaction.h"
 #include "display.h"
 
+class Transaction;	// Forward declaration.
+
 /**
  * Main rental system class coordinating the inventory and customer data stores,
  * output display, and providing the command interface.
