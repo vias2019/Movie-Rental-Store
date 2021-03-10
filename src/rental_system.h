@@ -24,8 +24,8 @@ public:
 	RentalSystem(Inventory inv, Clientele clients,
 	             std::unique_ptr<Display> disp);
 
-	void borrow(Transaction command);
-	void restock(Transaction command);
+	void borrow(Transaction& command);
+	void restock(Transaction& command);
 	void inventory();
 	void history(const CustomerID& customerID);
 
