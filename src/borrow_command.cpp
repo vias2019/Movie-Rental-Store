@@ -6,6 +6,7 @@
 #include <utility>	// std::move
 
 #include "borrow_command.h"
+#include "rental_system.h"
 
 /**
  * Construct a borrow command object.

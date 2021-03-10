@@ -6,6 +6,7 @@
 #include <utility>	// std::move
 
 #include "history_command.h"
+#include "rental_system.h"
 
 /**
  * Construct a history command object.

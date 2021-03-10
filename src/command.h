@@ -6,7 +6,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include "rental_system.h"
+class RentalSystem;	// Forward declaration.
 
 /**
  * Abstract base class for all rental system commands.
