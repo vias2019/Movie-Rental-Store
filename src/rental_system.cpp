@@ -28,7 +28,7 @@ RentalSystem::RentalSystem(Inventory inv, HashTable clients, std::unique_ptr<Dis
  * @param command The command object containing the necessary information to
  *                carry out the command.
  */
-void RentalSystem::borrow(Transaction command)
+void RentalSystem::borrow(Transaction& command)
 {
 	try
 	{
@@ -50,7 +50,7 @@ void RentalSystem::borrow(Transaction command)
  * @param command The command object containing the necessary information to
  *                carry out the command.
  */
-void RentalSystem::restock(Transaction command)
+void RentalSystem::restock(Transaction& command)
 {
 	try
 	{
@@ -86,7 +86,7 @@ void RentalSystem::inventory()
  *
  * @param customerID The id of the desired customer.
  */
-void RentalSystem::history(const CustomerID& customerID)
+void RentalSystem::history(int customerID)
 {
 	try
 	{
