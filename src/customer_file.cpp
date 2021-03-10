@@ -21,8 +21,9 @@ CustomerFile::CustomerFile(std::string filePath)
  *
  * @return The Clientele represented by the file contents.
  */
-Clientele CustomerFile::customers() const
+HashTable CustomerFile::customers() const
 {
+	return {};
 }
 
 /**

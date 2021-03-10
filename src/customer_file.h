@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-#include "clientele.h"
+#include "hashtable.h"
 #include "rental_system_error.h"
 
 /**
@@ -20,7 +20,7 @@ class CustomerFile
 {
 	CustomerFile(std::string filePath);
 
-	Clientele customers() const;
+	HashTable customers() const;
 	std::vector<RentalSystemError> errors() const;
 
 private:
