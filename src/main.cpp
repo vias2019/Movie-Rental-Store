@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "customer.h"
-#include "hashtable.h"
+#include "Customer.h"
 
+#include "HashTable.h"
 using namespace std;
 
 int main()
@@ -13,6 +13,7 @@ int main()
    //======================= Viktoriya's tests======================================================
    HashTable M;
    M.insert(6, "Vika", "Gri");
+   M.insert(8, "Dasha", "Mo");
    Customer v = M.findCustomer(3);
    int size = M.getSize();
    int movie = 123;
@@ -21,10 +22,10 @@ int main()
    int* code1 = &movie1;
    int movie2 = 123;
    int* code2 = &movie2;
-   M.borrow(6, 'B', 2, *code);
-   M.borrow(6, 'B', 1, *code1);
-   M.borrow(6, 'B', 3, *code2);
-   M.returnMovie(6, 'R', 1, *code1);
+   M.borrow(6, 'B', *code);
+   M.borrow(6, 'B', *code1);
+   M.borrow(6, 'B', *code2);
+   M.restock(6, 'R', *code1);
    M.printTransactions(6);
  
    //M.deleteData(3);

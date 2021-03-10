@@ -10,8 +10,8 @@
  *
  * @param filePath Path to the customer file.
  */
-CustomerFile::CustomerFile(std::string filePath)
-	: file_path{std::move(filePath)}
+CustomerFile::CustomerFile(string filePath)
+	: file_path{move(filePath)}
 {
 }
 
@@ -23,7 +23,8 @@ CustomerFile::CustomerFile(std::string filePath)
  */
 HashTable CustomerFile::customers() const
 {
-	return {};
+   HashTable nova; // should be updated
+   return nova;
 }
 
 /**
@@ -31,7 +32,6 @@ HashTable CustomerFile::customers() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> CustomerFile::errors() const
-{
-	return {};
-}
+//std::vector<RentalSystemError> errors() const
+//{
+//}

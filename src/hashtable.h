@@ -1,3 +1,7 @@
+/**
+ * @file hashtable.h
+ * @author Viktoriya Grishkina
+ */
 #pragma once
 #include <string>
 #include <vector>
@@ -13,9 +17,6 @@ private:
    //number of entries
    int size = 0;
    Customer arr[capacity];
-
-   // To save an element number for findCustomer() function
-   //int elementNumber = 0;
 
    //to find index for a key
    int getHashCode(int key);
@@ -40,19 +41,17 @@ public:
    //searches for the data
    Customer findCustomer(int key);
 
+   // gets the number of customers in the hash table
    int getSize();
 
    //print transactions by a customer
    void printTransactions(int key);
    
-   void borrow(int key, char command, int quantity, int& itemCode); // add quantity
+   // records borrow transactions by adding an object {type, itemCode} in 
+   // "history" vector
+   void borrow(int key, char command, int& itemCode); // add quantity
 
-   bool returnMovie(int key, char command, int quantity, int& itemCode);
-
-   
-
-
-
-   
-
+   // returns itemCode if movie is rented by the customer
+   // and throws an error if movie is not found
+   int restock(int key, char command, int& itemCode);
 };

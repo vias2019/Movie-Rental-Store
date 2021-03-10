@@ -1,8 +1,11 @@
+/**
+ * @file hashtable.cpp
+ * @author Viktoriya Grishkina
+ */
 #include <iostream>
 #include <vector>
-
-#include "hashtable.h"
-
+#include "hashTable.h"
+#include "rental_system_error.h"
 using namespace std;
 
 
@@ -35,7 +38,7 @@ int HashTable::checkQuantity(int key, int& code)
    if (temp.key != -1) {
       for (int i = 0; i < temp.history.size(); i++) {
          if (temp.history[i].movieCode == &code && temp.history[i].type == 'B') {
-            quantity = quantity + temp.history[i].quantity;
+            quantity++;
          }
       }
    }
@@ -89,7 +92,7 @@ void HashTable::printTransactions(int key)
       cout << endl;
       cout << "Transactions by a customer # " << key << ":" << endl;
       for (int i = 0; i < temp.history.size(); i++) {
-         cout << temp.history[i].type << ":    " << temp.history[i].quantity << "     " << *temp.history[i].movieCode << endl;
+         cout << temp.history[i].type << ":    " << *temp.history[i].movieCode << endl;
       }
    }
    else {
@@ -97,34 +100,31 @@ void HashTable::printTransactions(int key)
    }
 }
 
-void HashTable::borrow(int key, char command, int quantity, int& itemCode) // Public item& Return (Command command, item& item); 
+void HashTable::borrow(int key, char command, int& itemCode) // Public item& Return (Command command, item& item); //transaction object 
 {
    Customer temp = findCustomer(key);
    Customer::History nova;
    nova.type = command;
-   nova.quantity = quantity;
    nova.movieCode = &itemCode;
    arr[temp.indexN].history.push_back(nova);
 }
 
-bool HashTable::returnMovie(int key, char command, int quantity, int& itemCode)
+int HashTable::restock(int key, char command, int& itemCode) // remove quantity
 {
    Customer temp = findCustomer(key);
-   int rented = checkQuantity(key, itemCode);
 
-   cout << "quantity: " << rented << endl;
-   if (rented != 0 && rented <= quantity) {
-      Customer temp = findCustomer(key);
+   if (temp.key != -1) {
       Customer::History nova;
       nova.type = command;
-      nova.quantity = -quantity;
       nova.movieCode = &itemCode;
       arr[temp.indexN].history.push_back(nova);
-      return true;
+      return itemCode;
    }
-   else { 
+   else 
+   { 
       cout << "Item either not rented or quantity is wrong" << endl;
-      return false; }
+      throw runtime_error("message");
+   }
    
 }
 
