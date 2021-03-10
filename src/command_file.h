@@ -24,7 +24,7 @@ class CommandFile
 	std::vector<RentalSystemError> errors() const;
 
 private:
-	std:string file_path;
+	std::string file_path;
 };
 
 #endif
