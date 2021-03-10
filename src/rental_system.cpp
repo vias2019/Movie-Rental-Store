@@ -15,7 +15,7 @@
  * @param clients The clientele of the rental system
  * @param disp The display where rental system output should be sent.
  */
-RentalSystem(Inventory inv, Clientele clients, std::unique_ptr<Display> disp)
+RentalSystem(Inventory inv, HashTable clients, std::unique_ptr<Display> disp)
 	: inventory{std::move(inv)},
 	customers{std::move(clients)},
 	display{std::move(disp)}

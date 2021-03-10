@@ -10,7 +10,7 @@
  *
  * @param filePath Path to the customer file.
  */
-explicit CustomerFile::CustomerFile(std::string filePath)
+CustomerFile::CustomerFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
 }
@@ -21,8 +21,9 @@ explicit CustomerFile::CustomerFile(std::string filePath)
  *
  * @return The Clientele represented by the file contents.
  */
-Clientele CustomerFile::customers() const
+HashTable CustomerFile::customers() const
 {
+	return {};
 }
 
 /**
@@ -30,6 +31,7 @@ Clientele CustomerFile::customers() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> errors() const
+std::vector<RentalSystemError> CustomerFile::errors() const
 {
+	return {};
 }

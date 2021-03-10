@@ -10,7 +10,7 @@
  *
  * @param filePath Path to the command file.
  */
-explicit CommandFile::CommandFile(std::string filePath)
+CommandFile::CommandFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
 }
@@ -22,6 +22,7 @@ explicit CommandFile::CommandFile(std::string filePath)
  */
 std::vector<Command> CommandFile::commands() const
 {
+	return {};
 }
 
 /**
@@ -29,6 +30,7 @@ std::vector<Command> CommandFile::commands() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> errors() const
+std::vector<RentalSystemError> CommandFile::errors() const
 {
+	return {};
 }

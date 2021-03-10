@@ -4,7 +4,7 @@
  */
 
 #ifndef COMMAND_FILE_H
-#ifndef COMMAND_FILE_H
+#define COMMAND_FILE_H
 
 #include <string>
 #include <vector>
@@ -24,7 +24,7 @@ class CommandFile
 	std::vector<RentalSystemError> errors() const;
 
 private:
-	std:string file_path;
+	std::string file_path;
 };
 
 #endif

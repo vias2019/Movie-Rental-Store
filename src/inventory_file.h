@@ -4,7 +4,7 @@
  */
 
 #ifndef INVENTORY_FILE_H
-#ifndef INVENTORY_FILE_H
+#define INVENTORY_FILE_H
 
 #include <string>
 #include <vector>
@@ -24,7 +24,7 @@ class InventoryFile
 	std::vector<RentalSystemError> errors() const;
 
 private:
-	std:string file_path;
+	std::string file_path;
 };
 
 #endif

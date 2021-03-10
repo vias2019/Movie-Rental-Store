@@ -10,7 +10,7 @@
  *
  * @param filePath Path to the inventory file.
  */
-explicit InventoryFile::InventoryFile(std::string filePath)
+InventoryFile::InventoryFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
 }
@@ -22,6 +22,7 @@ explicit InventoryFile::InventoryFile(std::string filePath)
  */
 Inventory InventoryFile::inventory() const
 {
+	return {};
 }
 
 /**
@@ -29,6 +30,7 @@ Inventory InventoryFile::inventory() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> errors() const
+std::vector<RentalSystemError> InventoryFile::errors() const
 {
+	return {};
 }
