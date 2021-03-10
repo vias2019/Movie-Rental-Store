@@ -32,8 +32,12 @@ void RentalSystem::borrow(Transaction& command)
 {
 	try
 	{
-		auto& customer = customers.findCustomer(command.customerID());
-		auto& item = inventory.borrow(command.item());
+		auto customer = customers.findCustomer(command.customerID());
+		items.borrow(command.item());
+		// This is wrong! Item::borrow() should probably return a reference to
+		// the item so it can be passed on. Otherwise we can't refer back to it
+		// when we restock.
+		customer.borrow(command);
 	}
 	catch (const RentalSystemError& error)
 	{
@@ -41,7 +45,6 @@ void RentalSystem::borrow(Transaction& command)
 		return;
 	}
 
-	customer.borrow(std::move(command), item);
 }
 
 /**
@@ -54,8 +57,8 @@ void RentalSystem::restock(Transaction& command)
 {
 	try
 	{
-		auto& customer = customers.findCustomer(command.customerID());
-		auto& item = customer.restock(command.item());
+		auto customer = customers.findCustomer(command.customerID());
+		auto& item = customer.restock(command);
 
 		// In its current iteration, all inventory::restock() does is
 		// call item.restock(), which simply increments it's counter
