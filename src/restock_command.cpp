@@ -5,6 +5,7 @@
 
 #include <utility>	// std::move
 
+#include "rental_system.h"
 #include "restock_command.h"
 
 /**
