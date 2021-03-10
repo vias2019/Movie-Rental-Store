@@ -8,7 +8,6 @@
 
 #include <memory>	// Use smart pointers for owned memeory.
 
-#include "customer_id.h"
 #include "hashtable.h"
 #include "inventory.h"
 #include "transaction.h"

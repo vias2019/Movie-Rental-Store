@@ -6,7 +6,6 @@
 #ifndef HISTORY_COMMAND_H
 #define HISTORY_COMMAND_H
 
-#include "customer_id.h"
 #include "command.h"
 
 /**
