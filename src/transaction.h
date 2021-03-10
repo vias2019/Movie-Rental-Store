@@ -20,7 +20,7 @@ public:
 	 *
 	 * @return The customer id of the customer involved in the transaction.
 	 */
-	virtual CustomerID customerID() const = 0;
+	virtual int customerID() const = 0;
 
 	/**
 	 * Get the item involved in the transaction.

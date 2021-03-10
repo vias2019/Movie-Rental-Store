@@ -14,7 +14,7 @@
  * @param cid The customer id of the customer borrowing the item.
  * @param itm The item the customer wishes to borrow.
  */
-BorrowCommand::BorrowCommand(CustomerID cid, std::unique_ptr<Item> itm)
+BorrowCommand::BorrowCommand(int cid, std::unique_ptr<Item> itm)
 	: tx_customer_id{std::move(cid)}, tx_item{std::move(itm)}
 {
 }
@@ -34,7 +34,7 @@ void BorrowCommand::runWith(RentalSystem& rentalSystem)
  *
  * @return The customer id.
  */
-CustomerID BorrowCommand::customerID() const
+int BorrowCommand::customerID() const
 {
 	return tx_customer_id;
 }
