@@ -37,7 +37,7 @@ void RentalSystem::borrow(Transaction command)
 	}
 	catch (const RentalSystemError& error)
 	{
-		display->reportError(error);
+		display->displayError(error);
 		return;
 	}
 
@@ -64,11 +64,11 @@ void RentalSystem::restock(Transaction command)
 		// way. If this changes in the future, the interface may have
 		// to change to support a proper rollback or atomic commit
 		// operation.
-		inventory.restock(item);
+		items.restock(item);
 	}
 	catch (const RentalSystemError& error)
 	{
-		display->reportError(error);
+		display->displayError(error);
 		return;
 	}
 }
@@ -78,7 +78,7 @@ void RentalSystem::restock(Transaction command)
  */
 void RentalSystem::inventory()
 {
-	display->display(inventory.inventory());
+	display->displayInventory(items.display());
 }
 
 /**
@@ -90,13 +90,12 @@ void RentalSystem::history(const CustomerID& customerID)
 {
 	try
 	{
-		auto& customer = customers.findCustomer(customerID);
+		auto customer = customers.findCustomer(customerID);
+		display->displayHistory(customer.history);
 	}
 	catch (const RentalSystemError& error)
 	{
-		display->reportError(error);
+		display->displayError(error);
 		return;
 	}
-
-	display->display(customer.history());
 }
