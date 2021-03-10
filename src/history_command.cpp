@@ -22,7 +22,7 @@ HistoryCommand::HistoryCommand(CustomerID cid): customer_id{std::move(cid)}
  *
  * @param rentalSystem The rental system with which to process the report.
  */
-void HistoryCommand::runWith(RentalSystem& rentalSystem) override
+void HistoryCommand::runWith(RentalSystem& rentalSystem)
 {
 	rentalSystem.history(customer_id);
 }
