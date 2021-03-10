@@ -36,4 +36,5 @@ add_executable(Movie_Rental_Store
         src/restock_command.h
         src/transaction.h)
 
+target_compile_options(Movie_Rental_Store PRIVATE -Wall -Wextra -Wpedantic -Wshadow -g)
 target_compile_features(Movie_Rental_Store PRIVATE cxx_std_17)
