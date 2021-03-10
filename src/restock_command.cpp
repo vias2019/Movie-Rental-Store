@@ -23,7 +23,7 @@ RestockCommand::RestockCommand(CustomerID cid, std::shared_ptr<Item> itm)
  *
  * @param rentalSystem The rental system where the item will be returned.
  */
-void RestockCommand::runWith(RentalSystem& rentalSystem) override
+void RestockCommand::runWith(RentalSystem& rentalSystem)
 {
 	rentalSystem.restock(*this);
 }
@@ -33,7 +33,7 @@ void RestockCommand::runWith(RentalSystem& rentalSystem) override
  *
  * @return The customer id.
  */
-CustomerID RestockCommand::customerID() const override
+CustomerID RestockCommand::customerID() const
 {
 	return tx_customer_id;
 }
