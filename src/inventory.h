@@ -13,6 +13,7 @@
 #include "drama_movie.h"
 #include "classic_movie.h"
 #include <set>
+#include <memory>
 
 
 /**
