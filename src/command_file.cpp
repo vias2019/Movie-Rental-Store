@@ -22,6 +22,7 @@ CommandFile::CommandFile(std::string filePath)
  */
 std::vector<Command> CommandFile::commands() const
 {
+	return {};
 }
 
 /**
@@ -31,4 +32,5 @@ std::vector<Command> CommandFile::commands() const
  */
 std::vector<RentalSystemError> CommandFile::errors() const
 {
+	return {};
 }

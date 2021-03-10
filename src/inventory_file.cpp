@@ -22,6 +22,7 @@ InventoryFile::InventoryFile(std::string filePath)
  */
 Inventory InventoryFile::inventory() const
 {
+	return {};
 }
 
 /**
@@ -31,4 +32,5 @@ Inventory InventoryFile::inventory() const
  */
 std::vector<RentalSystemError> InventoryFile::errors() const
 {
+	return {};
 }

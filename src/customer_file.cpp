@@ -33,4 +33,5 @@ HashTable CustomerFile::customers() const
  */
 std::vector<RentalSystemError> CustomerFile::errors() const
 {
+	return {};
 }
