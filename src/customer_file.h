@@ -4,7 +4,7 @@
  */
 
 #ifndef CUSTOMER_FILE_H
-#ifndef CUSTOMER_FILE_H
+#define CUSTOMER_FILE_H
 
 #include <string>
 #include <vector>

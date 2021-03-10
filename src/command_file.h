@@ -4,7 +4,7 @@
  */
 
 #ifndef COMMAND_FILE_H
-#ifndef COMMAND_FILE_H
+#define COMMAND_FILE_H
 
 #include <string>
 #include <vector>

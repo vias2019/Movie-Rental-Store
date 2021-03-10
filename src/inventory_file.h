@@ -4,7 +4,7 @@
  */
 
 #ifndef INVENTORY_FILE_H
-#ifndef INVENTORY_FILE_H
+#define INVENTORY_FILE_H
 
 #include <string>
 #include <vector>
