@@ -6,6 +6,8 @@
 #ifndef RESTOCK_RESTOCK_H
 #define RESTOCK_RESTOCK_H
 
+#include <memory>	// shared_ptr
+
 #include "customer_id.h"
 #include "item.h"
 #include "transaction.h"
@@ -17,18 +19,18 @@
 class RestockCommand : public Transaction
 {
 public:
-	RestockCommand(CustomerID cid, Item itm);
+	RestockCommand(CustomerID cid, std::shared_ptr<Item> itm);
 
 	// Command interface.
 	void runWith(RentalSystem& rentalSystem) override;
 
 	// Transaction interface.
 	CustomerID customerID() const override;
-	Item item() const override;
+	Item& item() const override;
 
 private:
 	CustomerID tx_customer_id;
-	Item tx_item;
+	std::shared_ptr<Item> tx_item;
 };
 
 #endif
