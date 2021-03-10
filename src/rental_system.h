@@ -30,7 +30,7 @@ public:
 	void history(const CustomerID& customerID);
 
 private:
-	Inventory inventory;
+	Inventory items;
 	HashTable customers;
 
 	// Display is abstract. Use unique_ptr to allow polymorphism while still
