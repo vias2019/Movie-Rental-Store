@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(Movie_Rental_Store)
 
-set(CMAKE_CXX_STANDARD 17)
-
-include_directories(src)
-
 add_executable(Movie_Rental_Store
         src/borrow_command.cpp
         src/borrow_command.h
@@ -40,4 +36,4 @@ add_executable(Movie_Rental_Store
         src/restock_command.h
         src/transaction.h)
 
-
+target_compile_features(Movie_Rental_Store PRIVATE cxx_std_17)
