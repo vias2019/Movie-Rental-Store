@@ -31,6 +31,6 @@ HashTable CustomerFile::customers() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> errors() const
+std::vector<RentalSystemError> CustomerFile::errors() const
 {
 }

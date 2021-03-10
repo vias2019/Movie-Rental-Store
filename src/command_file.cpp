@@ -29,6 +29,6 @@ std::vector<Command> CommandFile::commands() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> errors() const
+std::vector<RentalSystemError> CommandFile::errors() const
 {
 }
