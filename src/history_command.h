@@ -6,7 +6,6 @@
 #ifndef HISTORY_COMMAND_H
 #define HISTORY_COMMAND_H
 
-#include "customer_id.h"
 #include "command.h"
 
 /**
@@ -15,13 +14,13 @@
 class HistoryCommand : public Command
 {
 public:
-	explicit HistoryCommand(CustomerID cid);
+	explicit HistoryCommand(int cid);
 
 	// Command interface.
 	void runWith(RentalSystem& rentalSystem) override;
 
 private:
-	CustomerID customer_id;
+	int customer_id;
 };
 
 #endif

@@ -5,6 +5,7 @@
 
 #include <utility>	// std::move
 
+#include "rental_system.h"
 #include "restock_command.h"
 
 /**
@@ -13,7 +14,7 @@
  * @param cid The customer id of the customer returning the item.
  * @param itm The item being returned by the customer.
  */
-RestockCommand::RestockCommand(CustomerID cid, Item itm)
+RestockCommand::RestockCommand(int cid, std::shared_ptr<Item> itm)
 	: tx_customer_id{std::move(cid)}, tx_item{std::move(itm)}
 {
 }
@@ -23,7 +24,7 @@ RestockCommand::RestockCommand(CustomerID cid, Item itm)
  *
  * @param rentalSystem The rental system where the item will be returned.
  */
-void RestockCommand::runWith(RentalSystem& rentalSystem) override
+void RestockCommand::runWith(RentalSystem& rentalSystem)
 {
 	rentalSystem.restock(*this);
 }
@@ -33,7 +34,7 @@ void RestockCommand::runWith(RentalSystem& rentalSystem) override
  *
  * @return The customer id.
  */
-CustomerID RestockCommand::customerID() const override
+int RestockCommand::customerID() const
 {
 	return tx_customer_id;
 }
@@ -43,7 +44,7 @@ CustomerID RestockCommand::customerID() const override
  *
  * @return The item the customer wants to return.
  */
-Item RestockCommand::item() const override
+Item& RestockCommand::item() const
 {
-	return tx_item;
+	return *tx_item;
 }

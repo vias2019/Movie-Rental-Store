@@ -13,7 +13,7 @@
  *
  * @param cid The customer id of the customer whose history should be reported.
  */
-HistoryCommand::HistoryCommand(CustomerID cid): customer_id{std::move(cid)}
+HistoryCommand::HistoryCommand(int cid): customer_id{std::move(cid)}
 {
 }
 

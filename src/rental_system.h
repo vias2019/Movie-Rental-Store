@@ -8,7 +8,6 @@
 
 #include <memory>	// Use smart pointers for owned memeory.
 
-#include "customer_id.h"
 #include "hashtable.h"
 #include "inventory.h"
 #include "transaction.h"
@@ -29,7 +28,7 @@ public:
 	void borrow(Transaction& command);
 	void restock(Transaction& command);
 	void inventory();
-	void history(const CustomerID& customerID);
+	void history(int customerID);
 
 private:
 	Inventory items;

@@ -8,6 +8,7 @@
 
 #include <vector>
 
+#include "customer.h"
 #include "item.h"
 #include "rental_system_error.h"
 #include "transaction.h"
@@ -19,8 +20,9 @@ class Transaction;	// Forward declaration.
  */
 class Display
 {
-	virtual void display(const std::vector<Item&>& items) const = 0;
-	virtual void display(const std::vector<Transaction&>& commands) const = 0;
+public:
+	virtual void displayInventory(const std::vector<std::shared_ptr<Item>>& items) const = 0;
+	virtual void displayHistory(std::vector<Customer::History> commands) const = 0;
 	virtual void displayError(const RentalSystemError& error) const = 0;
 };
 

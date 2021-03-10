@@ -15,8 +15,8 @@
  * @param clients The clientele of the rental system
  * @param disp The display where rental system output should be sent.
  */
-RentalSystem(Inventory inv, HashTable clients, std::unique_ptr<Display> disp)
-	: inventory{std::move(inv)},
+RentalSystem::RentalSystem(Inventory inv, HashTable clients, std::unique_ptr<Display> disp)
+	: items{std::move(inv)},
 	customers{std::move(clients)},
 	display{std::move(disp)}
 {
@@ -28,20 +28,23 @@ RentalSystem(Inventory inv, HashTable clients, std::unique_ptr<Display> disp)
  * @param command The command object containing the necessary information to
  *                carry out the command.
  */
-void RentalSystem::borrow(Transaction command)
+void RentalSystem::borrow(Transaction& command)
 {
 	try
 	{
-		auto& customer = customers.findCustomer(command.customerID());
-		auto& item = inventory.borrow(command.item());
+		auto customer = customers.findCustomer(command.customerID());
+		items.borrow(command.item());
+		// This is wrong! Item::borrow() should probably return a reference to
+		// the item so it can be passed on. Otherwise we can't refer back to it
+		// when we restock.
+		customer.borrow(command);
 	}
 	catch (const RentalSystemError& error)
 	{
-		display->reportError(error);
+		display->displayError(error);
 		return;
 	}
 
-	customer.borrow(std::move(command), item);
 }
 
 /**
@@ -50,12 +53,12 @@ void RentalSystem::borrow(Transaction command)
  * @param command The command object containing the necessary information to
  *                carry out the command.
  */
-void RentalSystem::restock(Transaction command)
+void RentalSystem::restock(Transaction& command)
 {
 	try
 	{
-		auto& customer = customers.findCustomer(command.customerID());
-		auto& item = customer.restock(command.item());
+		auto customer = customers.findCustomer(command.customerID());
+		auto& item = customer.restock(command);
 
 		// In its current iteration, all inventory::restock() does is
 		// call item.restock(), which simply increments it's counter
@@ -64,11 +67,11 @@ void RentalSystem::restock(Transaction command)
 		// way. If this changes in the future, the interface may have
 		// to change to support a proper rollback or atomic commit
 		// operation.
-		inventory.restock(item);
+		items.restock(item);
 	}
 	catch (const RentalSystemError& error)
 	{
-		display->reportError(error);
+		display->displayError(error);
 		return;
 	}
 }
@@ -78,7 +81,7 @@ void RentalSystem::restock(Transaction command)
  */
 void RentalSystem::inventory()
 {
-	display->display(inventory.inventory());
+	display->displayInventory(items.display());
 }
 
 /**
@@ -86,17 +89,16 @@ void RentalSystem::inventory()
  *
  * @param customerID The id of the desired customer.
  */
-void RentalSystem::history(const CustomerID& customerID)
+void RentalSystem::history(int customerID)
 {
 	try
 	{
-		auto& customer = customers.findCustomer(customerID);
+		auto customer = customers.findCustomer(customerID);
+		display->displayHistory(customer.history);
 	}
 	catch (const RentalSystemError& error)
 	{
-		display->reportError(error);
+		display->displayError(error);
 		return;
 	}
-
-	display->display(customer.history());
 }
