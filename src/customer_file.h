@@ -18,7 +18,7 @@
  */
 class CustomerFile
 {
-	explicit CustomerFile(std::string filePath);
+	CustomerFile(std::string filePath);
 
 	Clientele customers() const;
 	std::vector<RentalSystemError> errors() const;

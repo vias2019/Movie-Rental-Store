@@ -10,7 +10,7 @@
  *
  * @param filePath Path to the command file.
  */
-explicit CommandFile::CommandFile(std::string filePath)
+CommandFile::CommandFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
 }

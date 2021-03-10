@@ -10,7 +10,7 @@
  *
  * @param filePath Path to the customer file.
  */
-explicit CustomerFile::CustomerFile(std::string filePath)
+CustomerFile::CustomerFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
 }

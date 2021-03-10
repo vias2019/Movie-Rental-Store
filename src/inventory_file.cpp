@@ -10,7 +10,7 @@
  *
  * @param filePath Path to the inventory file.
  */
-explicit InventoryFile::InventoryFile(std::string filePath)
+InventoryFile::InventoryFile(std::string filePath)
 	: file_path{std::move(filePath)}
 {
 }
