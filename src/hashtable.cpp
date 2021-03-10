@@ -4,7 +4,7 @@
  */
 #include <iostream>
 #include <vector>
-#include "hashTable.h"
+#include "hashtable.h"
 #include "rental_system_error.h"
 using namespace std;
 

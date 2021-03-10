@@ -1,3 +1,7 @@
+/**
+ * @file customer.h
+ * @author Viktoriya Grishkina
+ */
 #pragma once
 #include <string>
 #include <vector>
@@ -14,7 +18,6 @@ public:
 
    struct History {
       char type = '\0';
-      int quantity = 0;
       int* movieCode;
    };
 

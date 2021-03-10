@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "Customer.h"
+#include "customer.h"
 
-#include "HashTable.h"
+#include "hashtable.h"
 using namespace std;
 
 int main()

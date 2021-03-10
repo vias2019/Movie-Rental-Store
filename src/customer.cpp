@@ -1,3 +1,7 @@
+/**
+ * @file customer.cpp
+ * @author Viktoriya Grishkina
+ */
 #include "customer.h"
 
 Customer::Customer()
