@@ -21,7 +21,7 @@
 class RentalSystem
 {
 public:
-	RentalSystem(Inventory inv, Clientele clients,
+	RentalSystem(Inventory inv, HashTable clients,
 	             std::unique_ptr<Display> disp);
 
 	void borrow(Transaction& command);
