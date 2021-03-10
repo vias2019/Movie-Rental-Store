@@ -11,3 +11,6 @@ data/
 
 # Ignore the doxygen configuration file.
 Doxyfile
+
+# Ignore ctags.
+tags
