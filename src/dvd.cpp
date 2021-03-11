@@ -55,12 +55,20 @@ void DVD::addStock(int stock) {
     availableStock += stock;
 }
 
+/**-------------------------------- borrow ------------------------------------
+ * borrows a copy of the DVD, decreasing available stock by one
+ */
 void DVD::borrow() {
-
+    if(availableStock > 0)
+        --availableStock;
 }
 
+/**-------------------------------- restock -----------------------------------
+ * restocks a copy of the DVD, increasing available stock by one
+ */
 void DVD::restock() {
-
+    if(availableStock < totalStock)
+        ++availableStock;
 }
 
 /**-------------------------------- getMovie ----------------------------------
