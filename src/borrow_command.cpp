@@ -26,7 +26,7 @@ BorrowCommand::BorrowCommand(int cid, std::unique_ptr<Item> itm)
  */
 void BorrowCommand::runWith(RentalSystem& rentalSystem)
 {
-	rentalSystem.borrow(*this);
+	rentalSystem.borrow(tx_customer_id, *tx_item);
 }
 
 /**
