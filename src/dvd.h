@@ -6,6 +6,8 @@
 #ifndef DVD_H
 #define DVD_H
 
+#include <memory>
+#include <iostream>
 #include "item.h"
 #include "movie.h"
 using namespace std;
@@ -17,14 +19,18 @@ class DVD : public Item {
     friend ostream& operator<<(ostream &, const DVD &);     // displays DVD movie & stock
 
 public:
-    DVD(Movie &, int = 0, int = 0);   // constructor
-    ~DVD();                         // destructor
-    void addStock(int) override;    // adds total stock to inventory
-    void borrow() override;         // attempts to check out DVD for a customer, decreasing stock
-    void restock() override;        // returns a borrowed DVD, increasing stock
+    DVD(Movie &, int = 0, int = 0);     // constructor
+    void addStock(int) override;        // adds total stock to inventory
+    void borrow() override;             // attempts to check out DVD for a customer, decreasing stock
+    void restock() override;            // returns a borrowed DVD, increasing stock
 
-    // comparison operator
-    int compare(const DVD &);
+    // accessors
+    Movie& getMovie() const;            // get the movie on the DVD
+    string getTitle() const;            // get the title of the movie on the DVD
+    int getTotalStock() const;          // get total stock of DVD
+    int getAvailableStock() const;      // get available stock of DVD
+
+    int compare(const DVD &) const;     // comparison operator
 
 private:
     int totalStock;                 // total stock of DVD in inventory

@@ -1,5 +1,5 @@
 /**
- * @file classic_movie.h
+ * @file classic_movie.cpp
  * @author Austin Arlitt
  */
 

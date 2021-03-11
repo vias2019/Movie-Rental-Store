@@ -6,7 +6,6 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-// includes TBD
 
 /**
  * Abstract base class for items stocked in the inventory
