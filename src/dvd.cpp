@@ -20,6 +20,15 @@ ostream& operator<<(ostream & out, const DVD & disk) {
     return out;
 }
 
+/**-------------------------- default constructor -----------------------------
+ * creates an empty DVD with null movie ptr & 0 stock
+ */
+DVD::DVD() {
+    movie = nullptr;
+    totalStock = 0;
+    availableStock = 0;
+}
+
 /**------------------------------ constructor ---------------------------------
  * creates a DVD from a movie and the total/available stock (both default to 0)
  * @param film the movie on the DVD

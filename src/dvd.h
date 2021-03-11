@@ -19,6 +19,7 @@ class DVD : public Item {
     friend ostream& operator<<(ostream &, const DVD &);     // displays DVD movie & stock
 
 public:
+    DVD();                              // default constructor
     DVD(Movie &, int = 0, int = 0);     // constructor
     ~DVD() override;                    // destructor
     void addStock(int) override;        // adds total stock to inventory
