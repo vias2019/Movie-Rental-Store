@@ -29,7 +29,7 @@ public:
 private:
     // comparison operator for ordering inventory sets
     struct comp {
-        bool operator()(const DVD* a, const DVD* b) {
+        bool operator()(const shared_ptr<DVD> a, const shared_ptr<DVD> b) const {
             return a->compare(*b) < 0;
         }
     };

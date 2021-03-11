@@ -12,7 +12,10 @@
  */
 class Movie {
 public:
+    virtual ~Movie() = 0;                               // destructor
     virtual int compare(const Movie &) const = 0;       // compares two movies
+
+    // accessors
     virtual std::string getGenre() const = 0;
     virtual std::string getDirector() const = 0;
     virtual std::string getTitle() const = 0;

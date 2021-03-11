@@ -32,6 +32,11 @@ DVD::DVD(Movie & film, int total, int available) {
     availableStock = available;
 }
 
+/**------------------------------- destructor ---------------------------------
+ * deallocates memory
+ */
+DVD::~DVD() = default;
+
 /**------------------------------- addStock -----------------------------------
  * adds stock of the DVD to inventory
  * @param stock the amount of stock to add to inventory
