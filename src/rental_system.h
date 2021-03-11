@@ -25,8 +25,8 @@ public:
 	RentalSystem(Inventory inv, HashTable clients,
 	             std::unique_ptr<Display> disp);
 
-	void borrow(Transaction& command);
-	void restock(Transaction& command);
+	void borrow(int customerID, Item& item);
+	void restock(int customerID, Item& item);
 	void inventory();
 	void history(int customerID);
 

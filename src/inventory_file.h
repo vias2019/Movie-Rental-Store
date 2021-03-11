@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "inventory.h"
-#include "rental_system_error.h"
 
 /**
  * Represents an inventory file. The file can be parsed to create an inventory
@@ -21,7 +20,7 @@ class InventoryFile
 	explicit InventoryFile(std::string filePath);
 
 	Inventory inventory() const;
-	std::vector<RentalSystemError> errors() const;
+	std::vector<std::runtime_error> errors() const;
 
 private:
 	std::string file_path;

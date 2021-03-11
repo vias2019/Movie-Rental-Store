@@ -15,7 +15,7 @@
  * @param itm The item being returned by the customer.
  */
 RestockCommand::RestockCommand(int cid, std::shared_ptr<Item> itm)
-	: tx_customer_id{std::move(cid)}, tx_item{std::move(itm)}
+	: tx_customer_id{cid}, tx_item{std::move(itm)}
 {
 }
 
@@ -26,7 +26,7 @@ RestockCommand::RestockCommand(int cid, std::shared_ptr<Item> itm)
  */
 void RestockCommand::runWith(RentalSystem& rentalSystem)
 {
-	rentalSystem.restock(*this);
+	rentalSystem.restock(tx_customer_id, *tx_item);
 }
 
 /**

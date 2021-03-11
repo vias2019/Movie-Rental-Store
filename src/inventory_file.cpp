@@ -30,7 +30,7 @@ Inventory InventoryFile::inventory() const
  *
  * @return A list of all parsing errors.
  */
-std::vector<RentalSystemError> InventoryFile::errors() const
+std::vector<std::runtime_error> InventoryFile::errors() const
 {
 	return {};
 }
