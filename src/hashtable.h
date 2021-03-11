@@ -6,13 +6,15 @@
 #include <string>
 #include <vector>
 #include "customer.h"
+#include "dvd.h"
+
 using namespace std;
 
 
 
 class HashTable {
 private:
-   static const int capacity = 5;
+   static const int capacity = 15;
    
    //number of entries
    int size = 0;
@@ -25,7 +27,7 @@ private:
    //Customer::History buildHistory(char type, int& movieCode);
    
    //check quantity
-   int checkQuantity(int key, int& code);
+   int checkQuantity(int key, DVD& code);
 
 public:
    
@@ -49,9 +51,9 @@ public:
    
    // records borrow transactions by adding an object {type, itemCode} in 
    // "history" vector
-   void borrow(int key, char command, int& itemCode); // add quantity
+   void borrow(int key, DVD& movie ); // add quantity int& itemCode
 
    // returns itemCode if movie is rented by the customer
    // and throws an error if movie is not found
-   int restock(int key, char command, int& itemCode);
+   DVD& restock(int key, DVD& movie);
 };

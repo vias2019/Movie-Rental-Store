@@ -5,23 +5,24 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "dvd.h"
 
-#include "customer.h"
+
 using namespace std;
 
 class Customer {
 public:
    int key;
-   string firstName;
    string lastName;
+   string firstName;
    int indexN;
 
    struct History {
       char type = '\0';
-      int* movieCode;
+      DVD *movie;
    };
 
-   vector <Customer::History> history;
+   vector <History> history;
    
    //a default constructor
    Customer();

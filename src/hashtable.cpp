@@ -6,6 +6,7 @@
 #include <vector>
 #include "hashtable.h"
 #include "rental_system_error.h"
+#include "item.h"
 using namespace std;
 
 
@@ -31,23 +32,26 @@ int HashTable::getHashCode(int key)
 //   return nova;
 //}
 
-int HashTable::checkQuantity(int key, int& code)
+int HashTable::checkQuantity(int key, DVD& movie)
 {
    int quantity = 0;
    Customer temp = findCustomer(key);
    if (temp.key != -1) {
-      for (int i = 0; i < temp.history.size(); i++) {
-         if (temp.history[i].movieCode == &code && temp.history[i].type == 'B') {
+      for (size_t i = 0; i < temp.history.size(); i++) {
+         if (temp.history[i].movie->compare(movie) == 0 && temp.history[i].type == 'B') {
             quantity++;
+         }
+         else if (temp.history[i].movie->compare(movie) == 0 && temp.history[i].type == 'R') {
+            quantity--;
          }
       }
    }
    return quantity;
 }
 
-void HashTable::insert(int key, string fn, string ln)
+void HashTable::insert(int key, string ln, string fn)
 {
-   Customer temp(key, fn, ln);
+   Customer temp(key, ln, fn);
    int hashIndex = getHashCode(key);
    
    if (arr[hashIndex].key == -1) {
@@ -59,6 +63,9 @@ void HashTable::insert(int key, string fn, string ln)
       while (arr[hashIndex].key != -1) {
          hashIndex++;
       }
+      arr[hashIndex] = temp;
+      arr[hashIndex].indexN = hashIndex;
+      size++;
    }
 }
 
@@ -66,8 +73,8 @@ void HashTable::deleteData(int key) {
    Customer cust = findCustomer(key);
    if (cust.key == key) {
       arr[cust.indexN].key = -1;
-      arr[cust.indexN].firstName = "";
       arr[cust.indexN].lastName = "";
+      arr[cust.indexN].firstName = "";
       arr[cust.indexN].indexN = -1;
       arr[cust.indexN].history.clear();
    }
@@ -91,8 +98,10 @@ void HashTable::printTransactions(int key)
    if (temp.key != -1) {
       cout << endl;
       cout << "Transactions by a customer # " << key << ":" << endl;
-      for (int i = 0; i < temp.history.size(); i++) {
-         cout << temp.history[i].type << ":    " << *temp.history[i].movieCode << endl;
+      for (size_t i = 0; i < temp.history.size(); i++) {
+         cout << temp.history[i].type << ":    ";
+         temp.history[i].movie->getMovie();
+         cout << endl;
       }
    }
    else {
@@ -100,30 +109,30 @@ void HashTable::printTransactions(int key)
    }
 }
 
-void HashTable::borrow(int key, char command, int& itemCode) // Public item& Return (Command command, item& item); //transaction object 
+void HashTable::borrow(int key, DVD& movie ) // Public item& Return (Command command, item& item); //transaction object //int& itemCode
 {
    Customer temp = findCustomer(key);
    Customer::History nova;
-   nova.type = command;
-   nova.movieCode = &itemCode;
+   nova.type = 'B';
+   nova.movie = &movie;
    arr[temp.indexN].history.push_back(nova);
 }
 
-int HashTable::restock(int key, char command, int& itemCode) // remove quantity
+DVD& HashTable::restock(int key, DVD& movie) // remove quantity
 {
    Customer temp = findCustomer(key);
-
-   if (temp.key != -1) {
+   int quantity = checkQuantity(key, movie);
+   if (temp.key != -1 && quantity > 0) {
       Customer::History nova;
-      nova.type = command;
-      nova.movieCode = &itemCode;
+      nova.type = 'R';
+      nova.movie = &movie;
       arr[temp.indexN].history.push_back(nova);
-      return itemCode;
+      return movie;
    }
    else 
    { 
-      cout << "Item either not rented or quantity is wrong" << endl;
-      throw runtime_error("message");
+      //cout << "Item either not rented or quantity is wrong" << endl;
+      throw runtime_error("Item either not rented or quantity is wrong");
    }
    
 }
