@@ -45,6 +45,7 @@ vector<shared_ptr<Item>> Inventory::display() {
 void Inventory::addStock(Item & item, int amount) {
     // first cast the item to DVD (only DVD movies are used in the project)
     DVD & dvd = dynamic_cast<DVD &>(item);
+    dvd.resetStock();       // ensures the precondition
 
     // check which genre of movie is on DVD
     Movie* movie = &dvd.getMovie();     // pointer fails to nullptr for following dynamic_cast checks
@@ -111,21 +112,41 @@ void Inventory::addStock(Item & item, int amount) {
             }
         }
 
-        //////////////////////////
+        // otherwise this movie listing must be added to inventory
+        else {
+            // first check for alternate listings of the movie
+            bool hasAlts = false;
 
-//        // if movie must be added to inventory
-//        if(it == comedies.end()) {
-//            dvd.addStock(amount);       // assuming the precondition
-//            comedies.insert(static_cast<shared_ptr<DVD>>(&dvd));
-//        }
-//
-//            // otherwise adjust stock for existing inventory
-//        else {
-//            DVD & disk = static_cast<DVD &>(*it->get());
-//            disk.addStock(amount);
-//        }
+            for(it = classics.begin(); it != classics.end(); ++it) {
+                DVD & disk = static_cast<DVD &>(*it->get());
 
-        // additional checks for equivalent entries
+                // if alternate listing is found, adjust for existing stock & set flag
+                if(dvd.getTitle() == disk.getTitle()) {
+                    dvd.setTotalStock(disk.getTotalStock());
+                    dvd.setAvailableStock(disk.getAvailableStock());
+                    hasAlts = true;
+                    break;
+                }
+            }
+
+            // if there are multiple listings, add new stock to all listings
+            if(hasAlts) {
+                classics.insert(static_cast<shared_ptr<DVD>>(&dvd));
+
+                for(it = classics.begin(); it != classics.end(); ++it) {
+                    DVD & disk = static_cast<DVD &>(*it->get());
+
+                    if(dvd.getTitle() == disk.getTitle())
+                        disk.addStock(amount);
+                }
+            }
+
+            // otherwise only add lone listing of movie
+            else {
+                dvd.addStock(amount);
+                classics.insert(static_cast<shared_ptr<DVD>>(&dvd));
+            }
+        }
     }
 }
 

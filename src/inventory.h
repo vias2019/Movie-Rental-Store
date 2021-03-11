@@ -37,9 +37,6 @@ private:
     std::set<std::shared_ptr<DVD>, comp> comedies;          // the comedy movies in the inventory
     std::set<std::shared_ptr<DVD>, comp> dramas;            // the drama movies in the inventory
     std::set<std::shared_ptr<DVD>, comp> classics;          // the classic movies in the inventory
-
-    // utility functions
-    // getTitle(const DVD*)??
 };
 
 #endif
