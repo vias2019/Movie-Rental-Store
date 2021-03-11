@@ -5,7 +5,6 @@
 #include <iostream>
 #include <vector>
 #include "hashtable.h"
-#include "rental_system_error.h"
 #include "item.h"
 using namespace std;
 

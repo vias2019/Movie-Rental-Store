@@ -6,7 +6,6 @@
 #include <utility>	// std::move
 
 #include "rental_system.h"
-#include "rental_system_error.h"
 
 /**
  * Construct a rental system object.
@@ -39,7 +38,7 @@ void RentalSystem::borrow(Transaction& command)
 		// when we restock.
 		customer.borrow(command);
 	}
-	catch (const RentalSystemError& error)
+	catch (const std::runtime_error& error)
 	{
 		display->displayError(error);
 		return;
@@ -69,7 +68,7 @@ void RentalSystem::restock(Transaction& command)
 		// operation.
 		items.restock(item);
 	}
-	catch (const RentalSystemError& error)
+	catch (const std::runtime_error& error)
 	{
 		display->displayError(error);
 		return;
@@ -96,9 +95,8 @@ void RentalSystem::history(int customerID)
 		auto customer = customers.findCustomer(customerID);
 		display->displayHistory(customer.history);
 	}
-	catch (const RentalSystemError& error)
+	catch (const std::runtime_error& error)
 	{
 		display->displayError(error);
-		return;
 	}
 }
