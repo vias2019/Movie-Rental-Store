@@ -25,7 +25,8 @@ int main()
 
    M.borrow(6, movie1);
    M.borrow(6, movie2);
-  // M.restock(6, movie1);
+  //M.restock(6, movie1);
+  // cout << "Print quantity: " << M.checkQuantity(6, movie1) << endl;
    M.printTransactions(6);
  
    //M.deleteData(3);

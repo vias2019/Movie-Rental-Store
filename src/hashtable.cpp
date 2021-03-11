@@ -23,15 +23,6 @@ int HashTable::getHashCode(int key)
     return (key % capacity);
 }
 
-//Customer::History HashTable::buildHistory(char type, int& movieCode)
-//{
-//   Customer::History nova;
-//   nova.type = type; 
-//   nova.quantity++;
-//   nova.movieCode = &movieCode;
-//   return nova;
-//}
-
 int HashTable::checkQuantity(int key, DVD& movie)
 {
    int quantity = 0;

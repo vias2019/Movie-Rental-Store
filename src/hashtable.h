@@ -23,12 +23,6 @@ private:
    //to find index for a key
    int getHashCode(int key);
 
-   //// To build an object stored in a vector
-   //Customer::History buildHistory(char type, int& movieCode);
-   
-   //check quantity
-   int checkQuantity(int key, DVD& code);
-
 public:
    
    HashTable();
@@ -36,6 +30,9 @@ public:
 
    //insert an entry
    void insert(int key, string fn, string ln);
+
+   //check quantity
+   int checkQuantity(int key, DVD& code);
 
    //deletes data
    void deleteData(int key);
