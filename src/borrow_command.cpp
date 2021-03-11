@@ -15,7 +15,7 @@
  * @param itm The item the customer wishes to borrow.
  */
 BorrowCommand::BorrowCommand(int cid, std::unique_ptr<Item> itm)
-	: tx_customer_id{std::move(cid)}, tx_item{std::move(itm)}
+	: tx_customer_id{cid}, tx_item{std::move(itm)}
 {
 }
 
