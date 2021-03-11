@@ -19,6 +19,7 @@ class ClassicMovie : public Movie {
 public:
     ClassicMovie(string genre, string director, string title,
                  int releaseYear, int releaseMonth, string actor);      // constructor
+    ~ClassicMovie() override;                                           // destructor
     int compare(const Movie &) const override;                          // compares two movies
 
     // accessors

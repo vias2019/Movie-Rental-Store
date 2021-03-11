@@ -35,6 +35,11 @@ ClassicMovie::ClassicMovie(string genre, string director, string title,
     this->actor = actor;
 }
 
+/**------------------------------- destructor ---------------------------------
+ * deallocates memory
+ */
+ClassicMovie::~ClassicMovie() = default;
+
 /**--------------------------------- compare ----------------------------------
  * compares two movies (classics are sorted by release date, then major actor)
  * @return -1, 0, 1 if this movie is less than/equal to/greater than the rhs

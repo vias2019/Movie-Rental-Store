@@ -31,6 +31,11 @@ ComedyMovie::ComedyMovie(string genre, string director, string title, int releas
     this->releaseYear = releaseYear;
 }
 
+/**------------------------------- destructor ---------------------------------
+ * deallocates memory
+ */
+ComedyMovie::~ComedyMovie() = default;
+
 /**--------------------------------- compare ----------------------------------
  * compares two movies (comedies are sorted by title, then release year)
  * @return -1/0/1 if this movie is less than/equal to/greater than the rhs

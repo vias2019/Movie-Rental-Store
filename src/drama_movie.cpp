@@ -31,6 +31,11 @@ DramaMovie::DramaMovie(string genre, string director, string title, int releaseY
     this->releaseYear = releaseYear;
 }
 
+/**------------------------------- destructor ---------------------------------
+ * deallocates memory
+ */
+DramaMovie::~DramaMovie() = default;
+
 /**--------------------------------- compare ----------------------------------
  * compares two movies (dramas are sorted by director, then title)
  * @return -1, 0, 1 if this movie is less than/equal to/greater than the rhs
