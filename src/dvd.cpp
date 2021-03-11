@@ -55,8 +55,13 @@ void DVD::addStock(int stock) {
     availableStock += stock;
 }
 
+void DVD::borrow() {
 
+}
 
+void DVD::restock() {
+
+}
 
 /**-------------------------------- getMovie ----------------------------------
  * retrieves the movie on the DVD
@@ -103,3 +108,26 @@ int DVD::compare(const DVD & rhs) const {
     return getMovie().compare(rhs.getMovie());
 }
 
+/**------------------------------- resetStock ---------------------------------
+ * resets total/available stock to zero
+ */
+void DVD::resetStock() {
+    totalStock = 0;
+    availableStock = 0;
+}
+
+/**------------------------------ setTotalStock -------------------------------
+ * sets the total stock of the DVD
+ * @param total the new total stock
+ */
+void DVD::setTotalStock(int total) {
+    totalStock = total;
+}
+
+/**---------------------------- setAvailableStock -----------------------------
+ * sets the available stock of the DVD
+ * @param available the new available stock
+ */
+void DVD::setAvailableStock(int available) {
+    availableStock = available;
+}

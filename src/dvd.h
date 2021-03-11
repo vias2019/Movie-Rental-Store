@@ -34,6 +34,11 @@ public:
 
     int compare(const DVD &) const;     // comparison operator
 
+    // utility functions (intended for use by Inventory only)
+    void resetStock();                  // resets stock to zero
+    void setTotalStock(int);            // set total stock of DVD
+    void setAvailableStock(int);        // set available stock of DVD
+
 private:
     int totalStock;                 // total stock of DVD in inventory
     int availableStock;             // currently available stock of DVD
