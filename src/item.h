@@ -12,7 +12,7 @@
  */
 class Item {
 public:
-    virtual ~Item() = default;           // destructor
+    virtual ~Item() = default;          // destructor
     virtual void addStock(int) = 0;     // adds total stock to inventory
     virtual void borrow() = 0;          // attempts to check out item for a customer, decreasing stock
     virtual void restock() = 0;         // returns a borrowed item, increasing stock

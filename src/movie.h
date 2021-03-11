@@ -12,7 +12,7 @@
  */
 class Movie {
 public:
-    virtual ~Movie() = default;                               // destructor
+    virtual ~Movie() = default;                         // destructor
     virtual int compare(const Movie &) const = 0;       // compares two movies
 
     // accessors
