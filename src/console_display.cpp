@@ -41,7 +41,7 @@ void ConsoleDisplay::displayHistory(int customerID, std::vector<Customer::Histor
 		default:
 			throw std::runtime_error("Invalid transaction code");
 		}
-		std::cout << transaction.movie->getMovie() << '\n';
+		std::cout << transaction.movie->getMovie().toString() << '\n';
 	});
 }
 
