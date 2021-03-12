@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "inventory_file.h"
 #include "customer.h"
 #include "customer_file.h"
 #include "hashtable.h"
@@ -11,6 +12,7 @@ using namespace std;
 
 int main()
 {
+	/*
    //======================= Viktoriya's tests======================================================
    CustomerFile Nova;
    
@@ -32,5 +34,9 @@ int main()
    //M.deleteData(3);
    //=================================================================================================
    std::cout << "Hello World!\n";
+   */
+	InventoryFile invf{"data/movies.txt"};
+	invf.inventory();
+	return 0;
 }
 
