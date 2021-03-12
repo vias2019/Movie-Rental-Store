@@ -4,6 +4,7 @@
  */
 
 #include "comedy_movie.h"
+#include <sstream>
 
 
 /**-------------------------------- operator<< --------------------------------
@@ -91,4 +92,15 @@ string ComedyMovie::getTitle() const {
  */
 int ComedyMovie::getReleaseYear() const {
     return releaseYear;
+}
+
+/**-------------------------------- toString-----------------------------------
+ * represent the movie as a string
+ * e.g. Robert Zemeckis, Back to the Future, 1985
+ */
+std::string ComedyMovie::toString() const
+{
+    std::stringstream stream;
+    stream << *this;
+    return stream.str();
 }
