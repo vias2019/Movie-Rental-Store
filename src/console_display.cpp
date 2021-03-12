@@ -31,7 +31,17 @@ void ConsoleDisplay::displayHistory(int customerID, std::vector<Customer::Histor
 {
 	std::cout << "Transaction history for customer " << customerID << ":\n";
 	std::for_each(std::cbegin(transactions), std::cend(transactions), [](const auto& transaction) {
-		std::cout << *transaction.movie << '\n';
+		switch (transaction.type) {
+		case 'b': case 'B':
+			std::cout << "Borrowed: ";
+			break;
+		case 'r': case 'R':
+			std::cout << "Returned: ";
+			break;
+		default:
+			throw std::runtime_error("Invalid transaction code");
+		}
+		std::cout << transaction.movie->getMovie().toString() << '\n';
 	});
 }
 
