@@ -82,7 +82,7 @@ void RentalSystem::history(int customerID)
 	try
 	{
 		auto customer = customers.findCustomer(customerID);
-		display->displayHistory(customer.history);
+		display->displayHistory(customerID, customer.history);
 	}
 	catch (const std::runtime_error& error)
 	{

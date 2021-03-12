@@ -20,8 +20,10 @@ class Transaction;	// Forward declaration.
 class Display
 {
 public:
+	virtual ~Display() = default;
+
 	virtual void displayInventory(const std::vector<std::shared_ptr<Item>>& items) const = 0;
-	virtual void displayHistory(std::vector<Customer::History> commands) const = 0;
+	virtual void displayHistory(int cusotomerID, std::vector<Customer::History> transactions) const = 0;
 	virtual void displayError(const std::runtime_error& error) const = 0;
 };
 

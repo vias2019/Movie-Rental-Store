@@ -7,6 +7,7 @@ add_executable(Movie_Rental_Store
         src/classic_movie.cpp
         src/comedy_movie.cpp
         src/command_file.cpp
+	src/console_display.cpp
 	src/customer.cpp
         src/customer_file.cpp
         src/drama_movie.cpp
