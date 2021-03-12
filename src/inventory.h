@@ -22,9 +22,9 @@
 class Inventory {
 public:
     std::vector<shared_ptr<Item>> display();        // gathers all inventory items into a sorted vector
-    void addStock(Item &, int);                     // adds stock of an item to the inventory
-    void borrow(Item &);                            // attempts to check out an item for a customer
-    void restock(Item &);                           // returns borrowed item from a customer to inventory
+    void addStock(DVD &, int);                     // adds stock of an item to the inventory
+    void borrow(DVD &);                            // attempts to check out an item for a customer
+    void restock(DVD &);                           // returns borrowed item from a customer to inventory
 
 private:
     // comparison operator for ordering inventory sets
