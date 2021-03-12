@@ -27,13 +27,13 @@ RentalSystem::RentalSystem(Inventory inv, HashTable clients, std::unique_ptr<Dis
  * @param command The command object containing the necessary information to
  *                carry out the command.
  */
-void RentalSystem::borrow(int customerID, Item& item)
+void RentalSystem::borrow(int customerID, DVD& dvd)
 {
 	try
 	{
 		// throws std::bad_cast if this fails.
-		DVD& dvd = dynamic_cast<DVD&>(item);
-		items.borrow(item);
+//		DVD& dvd = dynamic_cast<DVD&>(item);
+		items.borrow(dvd);
 		customers.borrow(customerID, dvd);
 	}
 	catch (const std::runtime_error& error)
@@ -49,14 +49,14 @@ void RentalSystem::borrow(int customerID, Item& item)
  * @param command The command object containing the necessary information to
  *                carry out the command.
  */
-void RentalSystem::restock(int customerID, Item& item)
+void RentalSystem::restock(int customerID, DVD& dvd)
 {
 	try
 	{
 		// throws std::bad_cast if this fails.
-		DVD& dvd = dynamic_cast<DVD&>(item);
+//		DVD& dvd = dynamic_cast<DVD&>(item);
 		customers.restock(customerID, dvd);
-		items.restock(item);
+		items.restock(dvd);
 	}
 	catch (const std::runtime_error& error)
 	{
