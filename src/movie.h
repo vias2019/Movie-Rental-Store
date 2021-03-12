@@ -20,6 +20,7 @@ public:
     virtual std::string getDirector() const = 0;
     virtual std::string getTitle() const = 0;
     virtual int getReleaseYear() const = 0;
+    virtual std::string toString() const = 0;	// virtual dispatch for displaying a movie
 };
 
 #endif

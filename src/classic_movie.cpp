@@ -4,6 +4,7 @@
  */
 
 #include "classic_movie.h"
+#include <sstream>
 
 
 /**-------------------------------- operator<< --------------------------------
@@ -118,4 +119,15 @@ int ClassicMovie::getReleaseMonth() const {
  */
 string ClassicMovie::getActor() const {
     return actor;
+}
+
+/**-------------------------------- toString-----------------------------------
+ * represent the movie as a string
+ * e.g. Robert Zemeckis, Back to the Future, 1985
+ */
+std::string ClassicMovie::toString() const
+{
+    std::stringstream stream;
+    stream << *this;
+    return stream.str();
 }

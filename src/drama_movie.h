@@ -26,6 +26,7 @@ public:
     string getDirector() const override;
     string getTitle() const override;
     int getReleaseYear() const override;
+    string toString() const override;
 
 private:
     string genre;
