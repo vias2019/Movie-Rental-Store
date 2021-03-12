@@ -55,6 +55,7 @@ void Inventory::addStock(DVD & dvd, int amount) {
     if(comedy != nullptr) {
         // check if movie is already in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
+	// TODO: fails here with mumap_chunk: invalid pointer
         it = comedies.find(static_cast<shared_ptr<DVD>>(&dvd));
 
         // if movie must be added to inventory
