@@ -4,6 +4,7 @@
  */
 
 #include "drama_movie.h"
+#include <sstream>
 
 
 /**-------------------------------- operator<< --------------------------------
@@ -95,3 +96,13 @@ int DramaMovie::getReleaseYear() const {
     return releaseYear;
 }
 
+/**-------------------------------- toString-----------------------------------
+ * represent the DVD as a string
+ * e.g. Robert Zemeckis, Back to the Future, 1985
+ */
+std::string DramaMovie::toString() const
+{
+    std::stringstream stream;
+    stream << *this;
+    return stream.str();
+}

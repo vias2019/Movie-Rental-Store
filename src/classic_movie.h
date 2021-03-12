@@ -29,6 +29,7 @@ public:
     int getReleaseYear() const override;
     int getReleaseMonth() const;
     string getActor() const;
+    string toString() const override;
 
 private:
     string genre;
