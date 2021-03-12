@@ -3,6 +3,7 @@
  * @author Austin Arlitt
  */
 
+#include <sstream>
 #include "dvd.h"
 
 
@@ -69,6 +70,18 @@ void DVD::borrow() {
 void DVD::restock() {
     if(availableStock < totalStock)
         ++availableStock;
+}
+
+/**-------------------------------- toString-----------------------------------
+ * represent the DVD as a string
+ * displays the available/total stock & movie for the DVD
+ * e.g. [7/10] Robert Zemeckis, Back to the Future, 1985
+ */
+std::string DVD::toString() const
+{
+	std::stringstream stream;
+	stream << *this;
+	return stream.str();
 }
 
 /**-------------------------------- getMovie ----------------------------------

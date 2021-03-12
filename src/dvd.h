@@ -25,6 +25,7 @@ public:
     void addStock(int) override;        // adds total stock to inventory
     void borrow() override;             // attempts to check out DVD for a customer, decreasing stock
     void restock() override;            // returns a borrowed DVD, increasing stock
+    std::string toString() const override;	// represent the DVD as a string
 
     // accessors
     Movie& getMovie() const;            // get the movie on the DVD
