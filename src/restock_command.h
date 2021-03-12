@@ -8,7 +8,7 @@
 
 #include <memory>	// shared_ptr
 
-#include "item.h"
+#include "dvd.h"
 #include "transaction.h"
 
 /**
@@ -18,18 +18,18 @@
 class RestockCommand : public Transaction
 {
 public:
-	RestockCommand(int cid, std::shared_ptr<Item> itm);
+	RestockCommand(int cid, std::shared_ptr<DVD> itm);
 
 	// Command interface.
 	void runWith(RentalSystem& rentalSystem) override;
 
 	// Transaction interface.
 	int customerID() const override;
-	Item& item() const override;
+	DVD& item() const override;
 
 private:
 	int tx_customer_id;
-	std::shared_ptr<Item> tx_item;
+	std::shared_ptr<DVD> tx_item;
 };
 
 #endif

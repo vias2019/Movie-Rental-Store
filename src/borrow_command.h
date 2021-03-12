@@ -8,7 +8,7 @@
 
 #include <memory> // unique_ptr
 
-#include "item.h"
+#include "dvd.h"
 #include "transaction.h"
 
 /**
@@ -18,18 +18,18 @@
 class BorrowCommand : public Transaction
 {
 public:
-	BorrowCommand(int cid, std::unique_ptr<Item> itm);
+	BorrowCommand(int cid, std::unique_ptr<DVD> itm);
 
 	// Command interface.
 	void runWith(RentalSystem& rentalSystem) override;
 
 	// Transaction interface.
 	int customerID() const override;
-	Item& item() const override;
+	DVD& item() const override;
 
 private:
 	int tx_customer_id;
-	std::unique_ptr<Item> tx_item;
+	std::unique_ptr<DVD> tx_item;
 };
 
 #endif
