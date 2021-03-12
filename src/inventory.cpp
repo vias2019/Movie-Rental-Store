@@ -42,9 +42,9 @@ vector<shared_ptr<Item>> Inventory::display() {
  *      convention used here assumes the item passed in has 0 stock, with the
  *      amount int tracking the quantity to be added to the inventory
  */
-void Inventory::addStock(Item & item, int amount) {
+void Inventory::addStock(DVD & dvd, int amount) {
     // first cast the item to DVD (only DVD movies are used in the project)
-    DVD & dvd = dynamic_cast<DVD &>(item);
+//    DVD & dvd = dynamic_cast<DVD &>(item);
     dvd.resetStock();       // ensures the precondition
 
     // check which genre of movie is on DVD
@@ -156,9 +156,9 @@ void Inventory::addStock(Item & item, int amount) {
  * @throws if item is not found in inventory
  * @throws if item is out of stock
  */
-void Inventory::borrow(Item & item) {
+void Inventory::borrow(DVD & dvd) {
     // first cast the item to DVD (only DVD movies are used in the project)
-    DVD & dvd = dynamic_cast<DVD &>(item);
+//    DVD & dvd = dynamic_cast<DVD &>(item);
 
     // check which genre of movie is on DVD
     Movie* movie = &dvd.getMovie();     // pointer fails to nullptr for following dynamic_cast checks
@@ -240,9 +240,9 @@ void Inventory::borrow(Item & item) {
  * @throws if item is not stocked by inventory
  * @throws if inventory is already full
  */
-void Inventory::restock(Item & item) {
+void Inventory::restock(DVD & dvd) {
     // first cast the item to DVD (only DVD movies are used in the project)
-    DVD & dvd = dynamic_cast<DVD &>(item);
+//    DVD & dvd = dynamic_cast<DVD &>(item);
 
     // check which genre of movie is on DVD
     Movie* movie = &dvd.getMovie();     // pointer fails to nullptr for following dynamic_cast checks
