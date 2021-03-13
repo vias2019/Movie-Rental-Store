@@ -16,7 +16,7 @@
  */
 ostream& operator<<(ostream & out, const DVD & disk) {
     out << '[' << disk.availableStock << " of " << disk.totalStock << ']'
-        << ' ' << disk.getMovie();
+        << ' ' << disk.getMovie().toString();
 
     return out;
 }
@@ -36,10 +36,9 @@ DVD::DVD() {
  * @param total the total stock of the DVD
  * @param available the available stock of the DVD
  */
-DVD::DVD(Movie & film, int total, int available) {
-    movie = static_cast<shared_ptr<Movie>>(&film);
-    totalStock = total;
-    availableStock = available;
+DVD::DVD(std::shared_ptr<Movie> film, int total, int available)
+	: totalStock{total}, availableStock{available}, movie{film}
+{
 }
 
 /**------------------------------- destructor ---------------------------------
