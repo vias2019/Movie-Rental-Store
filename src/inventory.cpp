@@ -151,30 +151,29 @@ void Inventory::addStock(DVD & dvd, int amount) {
  * @throws if item is out of stock
  */
 void Inventory::borrow(DVD & dvd) {
-    // first cast the item to DVD (only DVD movies are used in the project)
-//    DVD & dvd = dynamic_cast<DVD &>(item);
+    // first convert the DVD reference to shared_ptr
+    shared_ptr<DVD> dvd_ptr = make_shared<DVD>(dvd);
 
     // check which genre of movie is on DVD
-    Movie* movie = &dvd.getMovie();     // pointer fails to nullptr for following dynamic_cast checks
-                                        // whereas a reference fails with an exception, so use pointer
+    Movie* movie = &dvd_ptr->getMovie();    // pointer fails to nullptr for following dynamic_cast checks
+                                            // whereas a reference fails with an exception, so use pointer
     // check for comedy genre
     ComedyMovie* comedy = dynamic_cast<ComedyMovie*>(movie);
     if(comedy != nullptr) {
         // check if movie is in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
-        it = comedies.find(static_cast<shared_ptr<DVD>>(&dvd));
+        it = comedies.find(dvd_ptr);
 
         // if movie is not in inventory
         if(it == comedies.end())
             throw runtime_error("movie is not in inventory");
 
         // if movie is out of stock
-        DVD & disk = static_cast<DVD &>(*it->get());
-        if(disk.getAvailableStock() == 0)
+        if(it->get()->getAvailableStock() == 0)
             throw runtime_error("movie is out of stock");
 
         // otherwise safely borrow
-        disk.borrow();
+        it->get()->borrow();
         return;
     }
 
@@ -183,19 +182,18 @@ void Inventory::borrow(DVD & dvd) {
     if(drama != nullptr) {
         // check if movie is already in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
-        it = dramas.find(static_cast<shared_ptr<DVD>>(&dvd));
+        it = dramas.find(dvd_ptr);
 
         // if movie is not in inventory
         if(it == dramas.end())
             throw runtime_error("movie is not in inventory");
 
         // if movie is out of stock
-        DVD & disk = static_cast<DVD &>(*it->get());
-        if(disk.getAvailableStock() == 0)
+        if(it->get()->getAvailableStock() == 0)
             throw runtime_error("movie is out of stock");
 
         // otherwise safely borrow
-        disk.borrow();
+        it->get()->borrow();
         return;
     }
 
@@ -204,24 +202,21 @@ void Inventory::borrow(DVD & dvd) {
     if(classic != nullptr) {
         // check if movie is already in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
-        it = classics.find(static_cast<shared_ptr<DVD>>(&dvd));
+        it = classics.find(dvd_ptr);
 
         // if movie is not in inventory
         if(it == classics.end())
             throw runtime_error("movie is not in inventory");
 
         // if movie is out of stock
-        DVD & disk = static_cast<DVD &>(*it->get());
-        if(disk.getAvailableStock() == 0)
+        if(it->get()->getAvailableStock() == 0)
             throw runtime_error("movie is out of stock");
 
         // otherwise safely borrow for all listings of movie (i.e. same title, different actor)
         set<shared_ptr<DVD>, comp>::iterator equivIt;
         for(equivIt = classics.begin(); equivIt != classics.end(); ++equivIt) {
-            DVD & equivItem = static_cast<DVD &>(*equivIt->get());
-
-            if(disk.getTitle() == equivItem.getTitle())
-                equivItem.borrow();
+            if(it->get()->getTitle() == equivIt->get()->getTitle())
+                equivIt->get()->borrow();
         }
 
         return;
