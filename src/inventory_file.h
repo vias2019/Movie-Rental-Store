@@ -21,11 +21,20 @@ class InventoryFile
 public:
 	explicit InventoryFile(std::string filePath);
 
-	Inventory inventory() const;
-	std::vector<std::runtime_error> errors() const;
+	Inventory inventory();
+	std::vector<std::shared_ptr<std::runtime_error>> errors();
 
 private:
 	std::string file_path;
+
+	// Cache from previously parsing the file. This prevents re-parsing
+	// for each separate call to inventory() and errors().
+	bool parsed{false};
+	Inventory file_inventory{};
+	std::vector<std::shared_ptr<std::runtime_error>> error_list{};
+
+	// Helper method for perfoming file parsing and updating cache.
+	void parseFile();
 
 	// Since the assignment states that the formatting will be correct, parsing
 	// this with a regular expression should be ok.
@@ -50,8 +59,7 @@ private:
 		"([[:digit:]]+), "		// stock
 		"([[:alpha:][:space:]]+), "	// director
 		"([^,]+), "			// title
-		"([[:alpha:]]+) "		// major actor first name
-		"([[:alpha:]]+) "		// major actor last name
+		"([[:alpha:]]+ [[:alpha:]]+) "	// major actor
 		"([[:digit:]]+) "		// release month
 		"([[:digit:]]+)"		// release year
 	};
