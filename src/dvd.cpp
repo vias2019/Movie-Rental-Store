@@ -89,9 +89,9 @@ std::string DVD::toString() const
  * @return the movie on the DVD
  */
 Movie& DVD::getMovie() const {
-    Movie& film = static_cast<Movie &>(*movie);
+//    Movie& film = static_cast<Movie &>(*movie);
 
-    return film;
+    return *movie;
 }
 
 /**-------------------------------- getTitle ----------------------------------
