@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "console_display.h"
 #include "inventory_file.h"
 #include "customer.h"
 #include "customer_file.h"
@@ -35,8 +36,18 @@ int main()
    //=================================================================================================
    std::cout << "Hello World!\n";
    */
+
+	ConsoleDisplay display{};
+
 	InventoryFile invf{"data/movies.txt"};
-	invf.inventory();
+	Inventory inventory = invf.inventory();
+	const auto errors = invf.errors();
+	std::for_each(errors.cbegin(), errors.cend(), [&display](const auto& error) {
+		display.displayError(*error);
+	});
+
+	display.displayInventory(inventory.display());
+
 	return 0;
 }
 
