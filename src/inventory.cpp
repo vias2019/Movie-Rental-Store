@@ -42,7 +42,7 @@ vector<shared_ptr<Item>> Inventory::display() {
  *      convention used here assumes the item passed in has 0 stock, with the
  *      amount int tracking the quantity to be added to the inventory
  */
-void Inventory::addStock(DVD & dvd, int amount) {
+void Inventory::addStock(const DVD & dvd, int amount) {
     // first convert the DVD reference to shared_ptr
     shared_ptr<DVD> dvd_ptr = make_shared<DVD>(dvd);
     dvd_ptr->resetStock();      // ensures the precondition
