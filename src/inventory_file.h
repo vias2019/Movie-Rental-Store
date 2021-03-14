@@ -60,7 +60,7 @@ private:
 		"([[:alpha:][:space:]]+), "	// director
 		"([^,]+), "			// title
 		"([[:alpha:]]+ [[:alpha:]]+) "	// major actor
-		"([[:digit:]]+) "		// release month
+		"([[:digit:]]{1,2}) "		// release month
 		"([[:digit:]]+)"		// release year
 	};
 };
