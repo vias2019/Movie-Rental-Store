@@ -3,11 +3,13 @@
 
 #include <iostream>
 
+#include "command_file.h"
 #include "console_display.h"
-#include "inventory_file.h"
 #include "customer.h"
 #include "customer_file.h"
 #include "hashtable.h"
+#include "inventory_file.h"
+#include "rental_system.h"
 
 using namespace std;
 
@@ -37,16 +39,40 @@ int main()
    std::cout << "Hello World!\n";
    */
 
+	// Build the display.
 	ConsoleDisplay display{};
 
-	InventoryFile invf{"data/movies.txt"};
-	Inventory inventory = invf.inventory();
-	const auto errors = invf.errors();
-	std::for_each(errors.cbegin(), errors.cend(), [&display](const auto& error) {
+	// Build the inventory and report errors.
+	InventoryFile inventoryFile{"data/movies.txt"};
+	Inventory inventory = inventoryFile.inventory();
+	const auto inventoryErrors = inventoryFile.errors();
+	std::for_each(inventoryErrors.cbegin(), inventoryErrors.cend(), [&display](const auto& error) {
 		display.displayError(*error);
 	});
 
-	display.displayInventory(inventory.display());
+	// Build the clientele and report errors.
+	// TODO report errors
+	CustomerFile customerFile;
+	HashTable customers;
+	customerFile.readFile("data/customers.txt", customers);
+
+	// Build the rental system object.
+	RentalSystem rentalSystem{inventory, customers, std::unique_ptr<Display>{&display}};
+
+	// Build the command list and report errors.
+	CommandFile command_file{"data/commands.txt"};
+	auto commands = command_file.commands();
+	const auto command_errors = command_file.errors();
+	std::for_each(command_errors.cbegin(), command_errors.cend(), [&display](const auto& error) {
+		display.displayError(*error);
+	});
+
+	// Run the commands.
+	std::for_each(commands.cbegin(), commands.cend(), [&rentalSystem](const auto& command) {
+		command->runWith(rentalSystem);
+	});
+	
+
 
 	return 0;
 }
