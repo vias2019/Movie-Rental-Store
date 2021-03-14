@@ -52,7 +52,7 @@ std::vector<std::shared_ptr<std::runtime_error>> InventoryFile::errors()
  */
 void InventoryFile::parseFile()
 {
-	ifstream stream{file_path};
+	std::ifstream stream{file_path};
 
 	for (std::string line; std::getline(stream, line); )
 	{
@@ -104,7 +104,7 @@ void InventoryFile::parseFile()
 		else
 		{
 			error_list.emplace_back(
-				make_shared<std::runtime_error>(
+				std::make_shared<std::runtime_error>(
 					"[Inventory Parser] " + line
 			));
 		}
