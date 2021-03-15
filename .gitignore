@@ -6,9 +6,6 @@
 build/
 cmake-build-debug/*
 
-# Ignore the data directory.
-data/
-
 # Ignore the doxygen configuration file.
 Doxyfile
 

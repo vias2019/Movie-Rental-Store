@@ -22,7 +22,7 @@
 class Inventory {
 public:
     std::vector<shared_ptr<Item>> display();        // gathers all inventory items into a sorted vector
-    void addStock(DVD &, int);                     // adds stock of an item to the inventory
+    void addStock(const DVD &, int);                     // adds stock of an item to the inventory
     void borrow(DVD &);                            // attempts to check out an item for a customer
     void restock(DVD &);                           // returns borrowed item from a customer to inventory
 

@@ -27,7 +27,7 @@ public:
 	 *
 	 * @return The item involved in the transaction.
 	 */
-	virtual Item& item() const = 0;
+	virtual DVD& item() const = 0;
 };
 
 #endif

@@ -14,7 +14,7 @@
  * @param cid The customer id of the customer returning the item.
  * @param itm The item being returned by the customer.
  */
-RestockCommand::RestockCommand(int cid, std::shared_ptr<Item> itm)
+RestockCommand::RestockCommand(int cid, std::shared_ptr<DVD> itm)
 	: tx_customer_id{cid}, tx_item{std::move(itm)}
 {
 }
@@ -44,7 +44,7 @@ int RestockCommand::customerID() const
  *
  * @return The item the customer wants to return.
  */
-Item& RestockCommand::item() const
+DVD& RestockCommand::item() const
 {
 	return *tx_item;
 }

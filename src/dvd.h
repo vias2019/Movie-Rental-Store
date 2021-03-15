@@ -20,7 +20,7 @@ class DVD : public Item {
 
 public:
     DVD();                              // default constructor
-    DVD(Movie &, int = 0, int = 0);     // constructor
+    DVD(std::shared_ptr<Movie>, int = 0, int = 0);     // constructor
     ~DVD() override;                    // destructor
     void addStock(int) override;        // adds total stock to inventory
     void borrow() override;             // attempts to check out DVD for a customer, decreasing stock
