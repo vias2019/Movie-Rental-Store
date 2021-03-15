@@ -57,7 +57,7 @@ int main()
 	customerFile.readFile("data/customers.txt", customers);
 
 	// Build the rental system object.
-	RentalSystem rentalSystem{inventory, customers, std::unique_ptr<Display>{&display}};
+	RentalSystem rentalSystem{inventory, customers, std::unique_ptr<Display>{new ConsoleDisplay{}}};
 
 	// Build the command list and report errors.
 	CommandFile command_file{"data/commands.txt"};
