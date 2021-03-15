@@ -301,3 +301,52 @@ void Inventory::restock(DVD & dvd) {
         return;
     }
 }
+
+/**--------------------------------- lookup -----------------------------------
+ * looks up the full copy of the DVD stored in inventory with all info intact
+ * @param dvd the incomplete copy used to search
+ * @return the DVD will all movie info intact
+ */
+DVD& Inventory::lookup(DVD & dvd) {
+    // first convert the DVD reference to shared_ptr
+    shared_ptr<DVD> dvd_ptr = make_shared<DVD>(dvd);
+
+    // check which genre of movie is on DVD
+    Movie* movie = &dvd_ptr->getMovie();    // pointer fails to nullptr for following dynamic_cast checks
+                                            // whereas a reference fails with an exception, so use pointer
+    // check for comedy genre
+    ComedyMovie* comedy = dynamic_cast<ComedyMovie*>(movie);
+    if(comedy != nullptr) {
+        // check if movie is stocked in inventory
+        set<shared_ptr<DVD>, comp>::iterator it;
+        it = comedies.find(dvd_ptr);
+
+        if(it != comedies.end())
+            return *it->get();
+    }
+
+    // check for drama genre
+    DramaMovie* drama = dynamic_cast<DramaMovie*>(movie);
+    if(drama != nullptr) {
+        // check if movie is stocked in inventory
+        set<shared_ptr<DVD>, comp>::iterator it;
+        it = dramas.find(dvd_ptr);
+
+        if(it != dramas.end())
+            return *it->get();
+    }
+
+    // check for classic genre
+    ClassicMovie* classic = dynamic_cast<ClassicMovie*>(movie);
+    if(classic != nullptr) {
+        // check if movie is stocked in inventory
+        set<shared_ptr<DVD>, comp>::iterator it;
+        it = classics.find(dvd_ptr);
+
+        if(it != classics.end())
+            return *it->get();
+    }
+
+    // otherwise movie is not in inventory
+    throw runtime_error("movie not in inventory");
+}
