@@ -47,7 +47,7 @@ int ComedyMovie::compare(const Movie & rhs) const {
         return 0;
 
     // first compare genres (comedy < drama < classics)
-    if(rhs.getGenre() != "F")
+    if(rhs.getGenre() != "comedy")
         return -1;
 
     // otherwise compare comedies by title

@@ -51,7 +51,7 @@ int ClassicMovie::compare(const Movie & rhs) const {
         return 0;
 
     // first compare genres (comedy < drama < classics)
-    if(rhs.getGenre() != "C")
+    if(rhs.getGenre() != "classic")
         return 1;
 
     // otherwise compare release year
@@ -61,18 +61,18 @@ int ClassicMovie::compare(const Movie & rhs) const {
         return 1;
 
     // downcast to access child class data
-    const ClassicMovie & mov = dynamic_cast<const ClassicMovie &>(rhs);
+    const ClassicMovie * mov = dynamic_cast<const ClassicMovie *>(&rhs);
 
     // then compare release month
-    if(releaseMonth < mov.getReleaseMonth())
+    if(releaseMonth < mov->getReleaseMonth())
         return -1;
-    if(releaseMonth > mov.getReleaseMonth())
+    if(releaseMonth > mov->getReleaseMonth())
         return 1;
 
     // then compare actor
-    if(actor < mov.getActor())
+    if(actor < mov->getActor())
         return -1;
-    if(actor > mov.getActor())
+    if(actor > mov->getActor())
         return 1;
 
     // movies must be equal

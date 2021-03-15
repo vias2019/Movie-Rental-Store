@@ -47,9 +47,9 @@ int DramaMovie::compare(const Movie & rhs) const {
         return 0;
 
     // first compare genres (comedy < drama < classics)
-    if(rhs.getGenre() == "F")
+    if(rhs.getGenre() == "comedy")
         return 1;
-    if(rhs.getGenre() == "C")
+    if(rhs.getGenre() == "classic")
         return -1;
 
     // otherwise compare dramas by director
