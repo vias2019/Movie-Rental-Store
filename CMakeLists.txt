@@ -20,4 +20,3 @@ add_executable(Movie_Rental_Store
         src/rental_system.cpp
         src/restock_command.cpp)
 target_compile_options(Movie_Rental_Store PRIVATE -Wall -Wextra -Wpedantic -Wshadow -g)
-target_compile_features(Movie_Rental_Store PRIVATE cxx_std_17)
