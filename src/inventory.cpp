@@ -178,7 +178,7 @@ void Inventory::borrow(DVD & dvd) {
     }
 
     // check for drama genre
-    ComedyMovie* drama = dynamic_cast<ComedyMovie*>(movie);
+    DramaMovie* drama = dynamic_cast<DramaMovie*>(movie);
     if(drama != nullptr) {
         // check if movie is already in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
@@ -198,7 +198,7 @@ void Inventory::borrow(DVD & dvd) {
     }
 
     // check for classics genre
-    ComedyMovie* classic = dynamic_cast<ComedyMovie*>(movie);
+    ClassicMovie* classic = dynamic_cast<ClassicMovie*>(movie);
     if(classic != nullptr) {
         // check if movie is already in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
@@ -257,7 +257,7 @@ void Inventory::restock(DVD & dvd) {
     }
 
     // check for drama genre
-    ComedyMovie* drama = dynamic_cast<ComedyMovie*>(movie);
+    DramaMovie* drama = dynamic_cast<DramaMovie*>(movie);
     if(drama != nullptr) {
         // check if movie is stocked in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
@@ -277,7 +277,7 @@ void Inventory::restock(DVD & dvd) {
     }
 
     // check for classics genre
-    ComedyMovie* classic = dynamic_cast<ComedyMovie*>(movie);
+    ClassicMovie* classic = dynamic_cast<ClassicMovie*>(movie);
     if(classic != nullptr) {
         // check if movie is stocked in inventory
         set<shared_ptr<DVD>, comp>::iterator it;
