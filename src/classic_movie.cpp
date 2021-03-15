@@ -64,15 +64,15 @@ int ClassicMovie::compare(const Movie & rhs) const {
     const ClassicMovie & mov = dynamic_cast<const ClassicMovie &>(rhs);
 
     // then compare release month
-    if(releaseMonth < mov.releaseMonth)
+    if(releaseMonth < mov.getReleaseMonth())
         return -1;
-    if(releaseMonth > mov.releaseMonth)
+    if(releaseMonth > mov.getReleaseMonth())
         return 1;
 
     // then compare actor
-    if(actor < mov.actor)
+    if(actor < mov.getActor())
         return -1;
-    if(actor > mov.actor)
+    if(actor > mov.getActor())
         return 1;
 
     // movies must be equal
