@@ -82,40 +82,41 @@ void CommandFile::parseFile()
 		}
 		else if (std::regex_search(line, borrow_match, borrow_pattern))
 		{
-			auto item = parseDVD(line);
-			if (!item)
+			try
+			{
+				auto item = parseDVD(line);
+				file_commands.emplace_back(
+					std::shared_ptr<Command>{new BorrowCommand{
+						stoi(borrow_match[1]),
+						std::make_unique<DVD>(item)
+				}});
+			}
+			catch (const std::runtime_error& error)
 			{
 				file_errors.emplace_back(
 					std::make_shared<std::runtime_error>(
 						"[Command Parser] " + line
 				));
-			}
-			else
-			{
-				file_commands.emplace_back(
-					std::shared_ptr<Command>{new BorrowCommand{
-						stoi(borrow_match[1]),
-						std::make_unique<DVD>(*item)
-				}});
+				
 			}
 		}
 		else if (std::regex_search(line, return_match, return_pattern))
 		{
-			auto item = parseDVD(line);
-			if (!item)
+			try
+			{
+				auto item = parseDVD(line);
+				file_commands.emplace_back(
+					std::shared_ptr<Command>{new RestockCommand{
+						stoi(return_match[1]),
+						std::make_unique<DVD>(item)
+				}});
+			}
+			catch (const std::runtime_error& error)
 			{
 				file_errors.emplace_back(
 					std::make_shared<std::runtime_error>(
 						"[Command Parser] " + line
 				));
-			}
-			else
-			{
-				file_commands.emplace_back(
-					std::shared_ptr<Command>{new RestockCommand{
-						stoi(return_match[1]),
-						std::make_unique<DVD>(*item)
-				}});
 			}
 		}
 		else
