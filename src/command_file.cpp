@@ -133,9 +133,12 @@ void CommandFile::parseFile()
 /**
  * Parse a line in the file to build the involved DVD object.
  *
+ *
  * @param line The line in the command file.
+ * @return The matching DVD object.
+ * @throws If this method fails to match a DVD, it will throw std::runtime_error
  */
-std::optional<DVD> CommandFile::parseDVD(const std::string& line)
+DVD CommandFile::parseDVD(const std::string& line)
 {
 		std::smatch comedy_match;
 		std::smatch drama_match;
@@ -172,6 +175,6 @@ std::optional<DVD> CommandFile::parseDVD(const std::string& line)
 		}
 		else
 		{
-			return std::nullopt;
+			throw std::runtime_error("No matching DVD format");
 		}
 }
