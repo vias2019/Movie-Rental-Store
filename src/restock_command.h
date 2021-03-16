@@ -6,7 +6,7 @@
 #ifndef RESTOCK_RESTOCK_H
 #define RESTOCK_RESTOCK_H
 
-#include <memory>	// shared_ptr
+#include <memory>   // shared_ptr
 
 #include "dvd.h"
 #include "transaction.h"
@@ -18,18 +18,19 @@
 class RestockCommand : public Transaction
 {
 public:
-	RestockCommand(int cid, std::shared_ptr<DVD> itm);
+    // Constructor
+    RestockCommand(int cid, std::shared_ptr<DVD> itm);
 
-	// Command interface.
-	void runWith(RentalSystem& rentalSystem) override;
+    // Command interface.
+    void runWith(RentalSystem& rentalSystem) override;
 
-	// Transaction interface.
-	int customerID() const override;
-	DVD& item() const override;
+    // Transaction interface.
+    int customerID() const override;
+    DVD& item() const override;
 
 private:
-	int tx_customer_id;
-	std::shared_ptr<DVD> tx_item;
+    int tx_customer_id;             // The customer id
+    std::shared_ptr<DVD> tx_item;   // The movie being returned
 };
 
 #endif
