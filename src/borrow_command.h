@@ -18,18 +18,19 @@
 class BorrowCommand : public Transaction
 {
 public:
-	BorrowCommand(int cid, std::unique_ptr<DVD> itm);
+    // Constructor
+    BorrowCommand(int cid, std::unique_ptr<DVD> itm);
 
-	// Command interface.
-	void runWith(RentalSystem& rentalSystem) override;
+    // Command interface
+    void runWith(RentalSystem& rentalSystem) override;
 
-	// Transaction interface.
-	int customerID() const override;
-	DVD& item() const override;
+    // Transaction interface
+    int customerID() const override;
+    DVD& item() const override;
 
 private:
-	int tx_customer_id;
-	std::unique_ptr<DVD> tx_item;
+    int tx_customer_id;             // The customer id
+    std::unique_ptr<DVD> tx_item;   // The borrowed item
 };
 
 #endif
