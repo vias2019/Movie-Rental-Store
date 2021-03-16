@@ -85,6 +85,11 @@ Customer HashTable::findCustomer(int key) {
          hashIndex++;
       }
    }
+   if (arr[hashIndex].key == -1){
+      throw std::runtime_error("Customer " + to_string(key) 
+      + " does not exist");
+   }
+   
    return value;
 }
 
