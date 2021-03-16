@@ -105,7 +105,7 @@ void InventoryFile::parseFile()
 		{
 			error_list.emplace_back(
 				std::make_shared<std::runtime_error>(
-					"[Inventory Parser] " + line
+					"[Invalid inventory item] " + line
 			));
 		}
 	}

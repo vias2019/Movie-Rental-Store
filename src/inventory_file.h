@@ -41,7 +41,7 @@ private:
 	const std::regex comedy_pattern {
 		"F, "				// F for comdedy
 		"([[:digit:]]+), "		// stock
-		"([[:alpha:][:space:]]+), "	// director
+		"([^,]+), "			// director
 		"([^,]+), "			// title
 		"([[:digit:]]+)"		// year
 	};
@@ -49,7 +49,7 @@ private:
 	const std::regex drama_pattern {
 		"D, "				// D for drama
 		"([[:digit:]]+), "		// stock
-		"([[:alpha:][:space:]]+), "	// director
+		"([^,]+), " 			// director
 		"([^,]+), "			// title
 		"([[:digit:]]+)"		// year
 	};
@@ -57,9 +57,9 @@ private:
 	const std::regex classic_pattern {
 		"C, "				// C for classic movie
 		"([[:digit:]]+), "		// stock
-		"([[:alpha:][:space:]]+), "	// director
+		"([^,]+), "			// director
 		"([^,]+), "			// title
-		"([[:alpha:]]+ [[:alpha:]]+) "	// major actor
+		"([^, ]+ [^, ]+) "		// major actor
 		"([[:digit:]]{1,2}) "		// release month
 		"([[:digit:]]+)"		// release year
 	};

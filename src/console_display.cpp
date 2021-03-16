@@ -15,10 +15,13 @@
  */
 void ConsoleDisplay::displayInventory(const std::vector<std::shared_ptr<Item>>& items) const
 {
+	std::cout << '\n';
 	std::cout << "Current Rental System Inventory:\n";
+	std::cout << "--------------------------------\n";
 	std::for_each(std::cbegin(items), std::cend(items), [](const auto& item) {
 		std::cout << item->toString() << '\n';
 	});
+	std::cout << '\n';
 }
 
 /**
@@ -29,7 +32,9 @@ void ConsoleDisplay::displayInventory(const std::vector<std::shared_ptr<Item>>& 
  */
 void ConsoleDisplay::displayHistory(int customerID, std::vector<Customer::History> transactions) const
 {
+	std::cout << '\n';
 	std::cout << "Transaction history for customer " << customerID << ":\n";
+	std::cout << "--------------------------------------\n";
 	std::for_each(std::cbegin(transactions), std::cend(transactions), [](const auto& transaction) {
 		switch (transaction.type) {
 		case 'b': case 'B':
@@ -43,6 +48,12 @@ void ConsoleDisplay::displayHistory(int customerID, std::vector<Customer::Histor
 		}
 		std::cout << transaction.movie->getMovie().toString() << '\n';
 	});
+
+	if (transactions.empty())
+	{
+		std::cout << "None\n";
+	}
+	std::cout << '\n';
 }
 
 /**
