@@ -87,7 +87,7 @@ void CommandFile::parseFile()
 			{
 				file_errors.emplace_back(
 					std::make_shared<std::runtime_error>(
-						"[Command Parser] " + line
+						"[Invalid command] " + line
 				));
 			}
 			else
@@ -122,7 +122,7 @@ void CommandFile::parseFile()
 		{
 			file_errors.emplace_back(
 				std::make_shared<std::runtime_error>(
-					"[Command Parser] " + line
+					"[Invalid command] " + line
 			));
 		}
 	}
