@@ -3,26 +3,26 @@
  * @author Dominic Ewing
  */
 
-#include <utility>	// std::move
+#include <utility>  // move
 
 #include "history_command.h"
 #include "rental_system.h"
 
 /**
- * Construct a history command object.
+ * Constructor - Construct a history command object.
  *
  * @param cid The customer id of the customer whose history should be reported.
  */
-HistoryCommand::HistoryCommand(int cid): customer_id{std::move(cid)}
+HistoryCommand::HistoryCommand(int cid): customer_id{cid}
 {
 }
 
 /**
- * Ask the rental system to report a customer's transaction history.
+ * runWith - Ask the rental system to report a customer's transaction history.
  *
  * @param rentalSystem The rental system with which to process the report.
  */
 void HistoryCommand::runWith(RentalSystem& rentalSystem)
 {
-	rentalSystem.history(customer_id);
+    rentalSystem.history(customer_id);
 }

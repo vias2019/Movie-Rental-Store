@@ -15,19 +15,20 @@
 class Transaction : public Command
 {
 public:
-	/**
-	 * Get the customer id of the customer involved in the transaction.
-	 *
-	 * @return The customer id of the customer involved in the transaction.
-	 */
-	virtual int customerID() const = 0;
+    /**
+     * cusotmerID - Get the customer id of the customer involved in the
+     *              transaction.
+     *
+     * @return The customer id of the customer involved in the transaction.
+     */
+    virtual int customerID() const = 0;
 
-	/**
-	 * Get the item involved in the transaction.
-	 *
-	 * @return The item involved in the transaction.
-	 */
-	virtual DVD& item() const = 0;
+    /**
+     * item - Get the item involved in the transaction.
+     *
+     * @return The item involved in the transaction.
+     */
+    virtual DVD& item() const = 0;
 };
 
 #endif

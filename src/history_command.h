@@ -14,13 +14,14 @@
 class HistoryCommand : public Command
 {
 public:
-	explicit HistoryCommand(int cid);
+    // Constructor
+    explicit HistoryCommand(int cid);
 
-	// Command interface.
-	void runWith(RentalSystem& rentalSystem) override;
+    // Command interface.
+    void runWith(RentalSystem& rentalSystem) override;
 
 private:
-	int customer_id;
+    int customer_id;    // The customer's id number
 };
 
 #endif

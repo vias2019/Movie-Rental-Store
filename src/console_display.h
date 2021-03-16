@@ -11,9 +11,15 @@
 class ConsoleDisplay : public Display
 {
 public:
-	void displayInventory(const std::vector<std::shared_ptr<Item>>& items) const override;
-	void displayHistory(int customerID, std::vector<Customer::History> transactions) const override;
-	void displayError(const std::runtime_error& error) const override;
+    // Display interface
+    void displayInventory(
+        const std::vector<std::shared_ptr<Item>>& items) const override;
+
+    void displayHistory(
+        int customerID,
+        std::vector<Customer::History> transactions) const override;
+
+    void displayError(const std::runtime_error& error) const override;
 };
 
 #endif

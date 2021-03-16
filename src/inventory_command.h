@@ -14,8 +14,8 @@
 class InventoryCommand : public Command
 {
 public:
-	// Command interface.
-	void runWith(RentalSystem& rentalSystem) override;
+    // Command interface.
+    void runWith(RentalSystem& rentalSystem) override;
 };
 
 #endif

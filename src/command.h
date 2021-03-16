@@ -6,7 +6,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-class RentalSystem;	// Forward declaration.
+class RentalSystem; // Forward declaration
 
 /**
  * Abstract base class for all rental system commands.
@@ -14,15 +14,15 @@ class RentalSystem;	// Forward declaration.
 class Command
 {
 public:
-	/**
-	 * Run the command with the specified rental system.
-	 *
-	 * @param rentalSystem The rental system with which to run the command.
-	 */
-	virtual void runWith(RentalSystem& rentalSystem) = 0;
+    /**
+     * runWith - Run the command with the specified rental system.
+     *
+     * @param rentalSystem The rental system with which to run the command.
+     */
+    virtual void runWith(RentalSystem& rentalSystem) = 0;
 
-	// Ensure inheriting classes call their own destructors
-	virtual ~Command() = default;
+    // Ensure inheriting classes call their own destructors
+    virtual ~Command() = default;
 };
 
 #endif
