@@ -28,7 +28,5 @@ public:
    Customer();
 
    // a constructor
-   Customer(int keyInput, string lastNameInput, string firstNameInput);
-
-   //no need for a destructor??????????????????????????
+   Customer(int keyInput, const string& lastNameInput, const string& firstNameInput);
 };

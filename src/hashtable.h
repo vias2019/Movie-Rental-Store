@@ -29,7 +29,7 @@ public:
    ~HashTable();
 
    //insert an entry
-   void insert(int key, string fn, string ln);
+   void insert(int key, const string& fn, const string& ln);
 
    //check quantity
    int checkQuantity(int key, DVD& code);

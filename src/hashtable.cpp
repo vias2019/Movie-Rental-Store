@@ -41,7 +41,7 @@ int HashTable::checkQuantity(int key, DVD& movie)
    return quantity;
 }
 
-void HashTable::insert(int key, string ln, string fn)
+void HashTable::insert(int key, const string& ln, const string& fn)
 {
    Customer temp(key, ln, fn);
    int hashIndex = getHashCode(key);
@@ -78,6 +78,7 @@ void HashTable::deleteData(int key) {
 Customer HashTable::findCustomer(int key) {
    Customer value;
    int hashIndex = getHashCode(key);
+
    while(arr[hashIndex].key != -1){
       if(arr[hashIndex].key == key){
          return arr[hashIndex];
@@ -114,6 +115,7 @@ void HashTable::borrow(int key, DVD& movie )
 {
    Customer temp = findCustomer(key);
    Customer::History nova;
+
    nova.type = 'B';
    nova.movie = &movie;
    arr[temp.indexN].history.push_back(nova);
@@ -123,6 +125,7 @@ DVD& HashTable::restock(int key, DVD& movie) // remove quantity
 {
    Customer temp = findCustomer(key);
    int quantity = checkQuantity(key, movie);
+   
    if (temp.key != -1 && quantity > 0) {
       Customer::History nova;
       nova.type = 'R';

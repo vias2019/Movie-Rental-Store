@@ -33,9 +33,11 @@ HashTable CustomerFile::readFile(string file_path, HashTable& nova)
    int code;
    string ln;
    string fn;
+   
    if (file.eof()) {
       throw runtime_error("message");
    }
+
    file >> line;
    while (!file.eof() || line == "") {
       
