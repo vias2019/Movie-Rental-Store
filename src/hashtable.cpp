@@ -74,11 +74,10 @@ Customer HashTable::findCustomer(int key) {
    Customer value;
    for (int i = 0; i < capacity; i++) {
       if (arr[i].key == key) {
-         cout << "found" << endl;
          return arr[i];
       }
    }
-   cout << "not found" << endl;
+   throw std::runtime_error("Customer " + to_string(key) + " does not exist");
    return value;
 }
 
@@ -105,10 +104,6 @@ void HashTable::borrow(int key, DVD& movie ) // Public item& Return (Command com
    Customer::History nova;
    nova.type = 'B';
    nova.movie = &movie;
-   if (temp.indexN < 0 || capacity <= temp.indexN)
-   {
-	   throw std::runtime_error("Customer id " + to_string(key) + " not found");
-   }
    arr[temp.indexN].history.push_back(nova);
 }
 
