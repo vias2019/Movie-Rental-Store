@@ -24,13 +24,6 @@ using namespace std;
  *
  * @return The Clientele represented by the file contents.
  */
-//HashTable CustomerFile::customers(int key, string ln, string fn) const
-//{
-//   HashTable nova;
-//
-//
-//   return nova;
-//}
 
 HashTable CustomerFile::readFile(string file_path, HashTable& nova)
 {
@@ -40,7 +33,6 @@ HashTable CustomerFile::readFile(string file_path, HashTable& nova)
    int code;
    string ln;
    string fn;
-   //getline(file, line);
    if (file.eof()) {
       throw runtime_error("message");
    }
@@ -52,7 +44,6 @@ HashTable CustomerFile::readFile(string file_path, HashTable& nova)
       ln = line;
       file >> line;
       fn = line;
-      //getline(file, line);
       nova.insert(code, ln, fn);
       file >> line;
    }
