@@ -111,10 +111,6 @@ void HashTable::borrow(int key, DVD& movie )
    Customer::History nova;
    nova.type = 'B';
    nova.movie = &movie;
-   if (temp.indexN < 0 || capacity <= temp.indexN)
-   {
-	   throw std::runtime_error("Customer id " + to_string(key) + " not found");
-   }
    arr[temp.indexN].history.push_back(nova);
 }
 

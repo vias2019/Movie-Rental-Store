@@ -11,7 +11,6 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include <optional>
 
 #include "command.h"
 #include "dvd.h"
@@ -39,7 +38,7 @@ private:
 
 	// Helper methods for performing file parsing and updating cache.
 	void parseFile();
-	std::optional<DVD> parseDVD(const std::string& line);
+	DVD parseDVD(const std::string& line);
 
 	const std::regex inventory_pattern {
 		"I[[:space:]]+$"	// The code I and no other fields.

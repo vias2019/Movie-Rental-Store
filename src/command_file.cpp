@@ -82,47 +82,47 @@ void CommandFile::parseFile()
 		}
 		else if (std::regex_search(line, borrow_match, borrow_pattern))
 		{
-			auto item = parseDVD(line);
-			if (!item)
+			try
 			{
-				file_errors.emplace_back(
-					std::make_shared<std::runtime_error>(
-						"[Command Parser] " + line
-				));
-			}
-			else
-			{
+				auto item = parseDVD(line);
 				file_commands.emplace_back(
 					std::shared_ptr<Command>{new BorrowCommand{
 						stoi(borrow_match[1]),
-						std::make_unique<DVD>(*item)
+						std::make_unique<DVD>(item)
 				}});
+			}
+			catch (const std::runtime_error& error)
+			{
+				file_errors.emplace_back(
+					std::make_shared<std::runtime_error>(
+						"[Invalid command] " + line
+				));
 			}
 		}
 		else if (std::regex_search(line, return_match, return_pattern))
 		{
-			auto item = parseDVD(line);
-			if (!item)
+			try
 			{
-				file_errors.emplace_back(
-					std::make_shared<std::runtime_error>(
-						"[Command Parser] " + line
-				));
-			}
-			else
-			{
+				auto item = parseDVD(line);
 				file_commands.emplace_back(
 					std::shared_ptr<Command>{new RestockCommand{
 						stoi(return_match[1]),
-						std::make_unique<DVD>(*item)
+						std::make_unique<DVD>(item)
 				}});
+			}
+			catch (const std::runtime_error& error)
+			{
+				file_errors.emplace_back(
+					std::make_shared<std::runtime_error>(
+						"[Invalid command] " + line
+				));
 			}
 		}
 		else
 		{
 			file_errors.emplace_back(
 				std::make_shared<std::runtime_error>(
-					"[Command Parser] " + line
+					"[Invalid command] " + line
 			));
 		}
 	}
@@ -133,9 +133,12 @@ void CommandFile::parseFile()
 /**
  * Parse a line in the file to build the involved DVD object.
  *
+ *
  * @param line The line in the command file.
+ * @return The matching DVD object.
+ * @throws If this method fails to match a DVD, it will throw std::runtime_error
  */
-std::optional<DVD> CommandFile::parseDVD(const std::string& line)
+DVD CommandFile::parseDVD(const std::string& line)
 {
 		std::smatch comedy_match;
 		std::smatch drama_match;
@@ -172,6 +175,6 @@ std::optional<DVD> CommandFile::parseDVD(const std::string& line)
 		}
 		else
 		{
-			return std::nullopt;
+			throw std::runtime_error("No matching DVD format");
 		}
 }

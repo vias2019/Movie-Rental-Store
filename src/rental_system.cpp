@@ -31,10 +31,17 @@ void RentalSystem::borrow(int customerID, DVD& dvd)
 {
 	try
 	{
-		// throws std::bad_cast if this fails.
-//		DVD& dvd = dynamic_cast<DVD&>(item);
-		items.borrow(dvd);
-		customers.borrow(customerID, dvd);
+		// This throws an exectption for an invalid customer id.
+		(void) customers.findCustomer(customerID);
+
+		// Get the actual item from the inventory so that all the movie
+		// information is stored in the customer history, and we know
+		// it is valid.
+		DVD& inventory_item = items.lookup(dvd);
+
+		// Perform the borrow operations.
+		items.borrow(inventory_item);
+		customers.borrow(customerID, inventory_item);
 	}
 	catch (const std::runtime_error& error)
 	{
@@ -53,10 +60,16 @@ void RentalSystem::restock(int customerID, DVD& dvd)
 {
 	try
 	{
-		// throws std::bad_cast if this fails.
-//		DVD& dvd = dynamic_cast<DVD&>(item);
-		customers.restock(customerID, dvd);
-		items.restock(dvd);
+		// This throws an exectption for an invalid customer id.
+		(void) customers.findCustomer(customerID);
+
+		// Get the actual item from the inventory so that we know the
+		// item is valid.
+		DVD& inventory_item = items.lookup(dvd);
+
+		// Perform the restorck operations.
+		customers.restock(customerID, inventory_item);
+		items.restock(inventory_item);
 	}
 	catch (const std::runtime_error& error)
 	{
