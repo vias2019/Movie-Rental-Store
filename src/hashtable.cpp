@@ -2,7 +2,6 @@
  * @file hashtable.cpp
  * @author Viktoriya Grishkina
  */
-#include <iostream> // input/output
 #include <vector> // vector
 #include "hashtable.h"
 #include "item.h"
