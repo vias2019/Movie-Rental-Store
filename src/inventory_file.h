@@ -39,7 +39,13 @@ private:
     void parseFile();
 
     // Since the requirements dictate that the formatting of the file is
-    // correct, these can be easily parsed with regualar expressions.
+    // correct, these can be easily parsed with regualar expressions. These
+    // regular expressions are purposefully very permissive in accepting names
+    // for directors, actors, and titles. It seems better to allow some odd
+    // inputs than to be unable to add movies from "Daniel Day-Lewis",
+    // "Lupita Nyong'o" or "50 Cent" because their names (or screen names) are
+    // not supported by the program. The main technical limitiations stem from
+    // the use of spaces and commas as field separators.
     const std::regex comedy_pattern {
         "F, "                   // F for comdedy
         "([[:digit:]]+), "      // stock
