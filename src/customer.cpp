@@ -4,6 +4,7 @@
  */
 #include "customer.h"
 
+// Assign default values for a constractor
 Customer::Customer()
 {
    key = -1;
@@ -12,6 +13,7 @@ Customer::Customer()
    indexN = -1;
 }
 
+// Assign values for a copy constractor
 Customer::Customer(int keyInput, const string& lastNameInput, 
 	const string& firstNameInput)
 {

@@ -2,26 +2,20 @@
  * @file hashtable.cpp
  * @author Viktoriya Grishkina
  */
-#include <iostream>
-#include <vector>
+#include <iostream> // input/output
+#include <vector> // vector
 #include "hashtable.h"
 #include "item.h"
 using namespace std;
 
 
-HashTable::HashTable()
-{
-}
-
-HashTable::~HashTable()
-{
-}
-
+// Gets a hash key number
 int HashTable::getHashCode(int key)
 {
     return (key % capacity);
 }
 
+// Checks quantity of movies, facilitates restock function
 int HashTable::checkQuantity(int key, DVD& movie)
 {
    int quantity = 0;
@@ -41,6 +35,7 @@ int HashTable::checkQuantity(int key, DVD& movie)
    return quantity;
 }
 
+// Insert an entry in the Hashtable
 void HashTable::insert(int key, const string& ln, const string& fn)
 {
    Customer temp(key, ln, fn);
@@ -61,6 +56,7 @@ void HashTable::insert(int key, const string& ln, const string& fn)
    }
 }
 
+// Deletes data in the Customer list
 void HashTable::deleteData(int key) {
    Customer cust = findCustomer(key);
    if (cust.key == key) {
@@ -75,6 +71,7 @@ void HashTable::deleteData(int key) {
    }
 }
 
+// Finds a customer using a hash key
 Customer HashTable::findCustomer(int key) {
    Customer value;
    int hashIndex = getHashCode(key);
@@ -94,9 +91,11 @@ Customer HashTable::findCustomer(int key) {
    return value;
 }
 
+// Prints selected customer's transactions
 void HashTable::printTransactions(int key)
 {
    Customer temp = findCustomer(key);
+
    if (temp.key != -1) {
       cout << endl;
       cout << "Transactions by a customer # " << key << ":" << endl;
@@ -111,6 +110,8 @@ void HashTable::printTransactions(int key)
    }
 }
 
+// Processes borrow transaction, stores a record in history vector 
+// under a specific customer
 void HashTable::borrow(int key, DVD& movie ) 
 {
    Customer temp = findCustomer(key);
@@ -121,7 +122,10 @@ void HashTable::borrow(int key, DVD& movie )
    arr[temp.indexN].history.push_back(nova);
 }
 
-DVD& HashTable::restock(int key, DVD& movie) // remove quantity
+// Processes restock transaction, checks quantity before return
+// to make sure that the returned item was borrowed;
+// stores a record in History vector under a customer
+DVD& HashTable::restock(int key, DVD& movie) 
 {
    Customer temp = findCustomer(key);
    int quantity = checkQuantity(key, movie);
@@ -135,12 +139,12 @@ DVD& HashTable::restock(int key, DVD& movie) // remove quantity
    }
    else 
    { 
-      //cout << "Item either not rented or quantity is wrong" << endl;
       throw runtime_error("Item either not rented or quantity is wrong");
    }
    
 }
 
+// Returns the size/number of customers
 int HashTable::getSize()
 {
    return size;

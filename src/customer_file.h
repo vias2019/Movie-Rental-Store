@@ -6,30 +6,26 @@
 #ifndef CUSTOMER_FILE_H
 
 
-#include <string>
-#include <vector>
-#include <fstream>
+#include <string> // string
+#include <vector> // vector
+#include <fstream> // parse information from file
 
 #include "hashtable.h"
 using namespace std;
-//#include "rental_system_error.h"
-
 
 /**
- * Represents an customer file. The file can be parsed to create a Clientele
+ * The .txt file can be parsed to create a Hashtable
  * object aggregating all the represented in the file.
  */
 class CustomerFile
 {
-	/*explicit CustomerFile(std::string filePath);*/
-
-	//HashTable customers(int key, string ln, string fn) const;
-	//std::vector<RentalSystemError> errors() const;
-
+	
 private:
 	std::ifstream file_path;
 
 public:
+	// Reads data from the txt file and saves it in Customer 
+	// hashtable
    	HashTable readFile(string file_path, HashTable& nova);
 };
 

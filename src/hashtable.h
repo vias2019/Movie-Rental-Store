@@ -3,54 +3,57 @@
  * @author Viktoriya Grishkina
  */
 #pragma once
-#include <string>
-#include <vector>
+#include <string> // string
+#include <vector> // vector
 #include "customer.h"
 #include "dvd.h"
 
 using namespace std;
 
+/**
+* Builds a hashtable for Customer list
+**/
 
 
 class HashTable {
 private:
    static const int capacity = 15;
    
-   //number of entries
+   // Number of entries in the hashtable
    int size = 0;
+
+   // HashTable vector 
    Customer arr[capacity];
 
-   //to find index for a key
+   // To find index for a key
    int getHashCode(int key);
 
 public:
    
-   HashTable();
-   ~HashTable();
-
-   //insert an entry
+   
+   // Insert an entry
    void insert(int key, const string& fn, const string& ln);
 
-   //check quantity
+   // Check quantity
    int checkQuantity(int key, DVD& code);
 
-   //deletes data
+   // Deletes data
    void deleteData(int key);
 
-   //searches for the data
+   // Searches for the data
    Customer findCustomer(int key);
 
-   // gets the number of customers in the hash table
+   // Gets the number of customers in the hash table
    int getSize();
 
-   //print transactions by a customer
+   // Prints transactions by a customer
    void printTransactions(int key);
    
-   // records borrow transactions by adding an object {type, itemCode} in 
+   // Records borrow transactions by adding an object {type, itemCode} in 
    // "history" vector
-   void borrow(int key, DVD& movie ); // add quantity int& itemCode
+   void borrow(int key, DVD& movie ); 
 
-   // returns itemCode if movie is rented by the customer
+   // Returns itemCode if movie is rented by the customer
    // and throws an error if movie is not found
    DVD& restock(int key, DVD& movie);
 };
