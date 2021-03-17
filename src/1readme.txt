@@ -8,8 +8,9 @@ From the folder with all the files, the following commands would work:
 
 
 Project by Austin Arlitt, Dominic Ewing, & Viktoriya Grishkina. The data and
-command parsing was written by Dominic, the inventory management system was
-written by Austin, and the customer database and history was done by Viktoriya.
+command parsing, and main.cpp was written by Dominic, the inventory management 
+system was written by Austin, and the customer file parsing, hashtable database
+implementation and transaction history setup was done by Viktoriya.
 
 Individual contributions by file:
 borrow_command by Dominic
