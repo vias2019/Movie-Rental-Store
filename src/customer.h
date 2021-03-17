@@ -10,8 +10,8 @@
 
 using namespace std;
 /**
-* Creates a customer record - object, which stores key, lastname, and first name, 
-* history of transactions, and erray index number.
+* Creates a customer record - object, which stores key, lastname, and first 
+* name, history of transactions, and erray index number.
 **/
 class Customer {
 public:
