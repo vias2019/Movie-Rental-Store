@@ -12,7 +12,8 @@ Customer::Customer()
    indexN = -1;
 }
 
-Customer::Customer(int keyInput, const string& lastNameInput, const string& firstNameInput)
+Customer::Customer(int keyInput, const string& lastNameInput, 
+	const string& firstNameInput)
 {
    key = keyInput;
    lastName = lastNameInput;

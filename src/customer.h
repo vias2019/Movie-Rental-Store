@@ -28,5 +28,6 @@ public:
    Customer();
 
    // a constructor
-   Customer(int keyInput, const string& lastNameInput, const string& firstNameInput);
+   Customer(int keyInput, const string& lastNameInput, 
+   	const string& firstNameInput);
 };
