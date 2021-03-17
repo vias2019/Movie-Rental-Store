@@ -16,15 +16,15 @@
 
 // Define the default input file locations
 #ifndef INVENTORY_FILE_LOCATION
-#define INVENTORY_FILE_LOCATION data4movies.txt
+#define INVENTORY_FILE_LOCATION "./data4movies.txt"
 #endif
 
 #ifndef CUSTOMER_FILE_LOCATION
-#define CUSTOMER_FILE_LOCATION data4customers.txt
+#define CUSTOMER_FILE_LOCATION "./data4customers.txt"
 #endif
 
 #ifndef COMMAND_FILE_LOCATION
-#define COMMAND_FILE_LOCATION data4commands.txt
+#define COMMAND_FILE_LOCATION "./data4commands.txt"
 #endif
 
 /**
@@ -36,7 +36,7 @@ int main()
     ConsoleDisplay display{};
 
     // Build the inventory and report errors.
-    InventoryFile inventoryFile{"data/movies.txt"};
+    InventoryFile inventoryFile{INVENTORY_FILE_LOCATION};
     Inventory inventory = inventoryFile.inventory();
     const auto inventoryErrors = inventoryFile.errors();
     std::for_each(inventoryErrors.cbegin(), inventoryErrors.cend(),
@@ -47,14 +47,14 @@ int main()
     // Build the client list.
     CustomerFile customerFile;
     HashTable customers;
-    customerFile.readFile("data/customers.txt", customers);
+    customerFile.readFile(CUSTOMER_FILE_LOCATION, customers);
 
     // Build the rental system object.
     RentalSystem rentalSystem{
         inventory, customers, std::unique_ptr<Display>{new ConsoleDisplay{}}};
 
     // Build the command list and report errors.
-    CommandFile command_file{"data/commands.txt"};
+    CommandFile command_file{COMMAND_FILE_LOCATION};
     auto commands = command_file.commands();
     const auto command_errors = command_file.errors();
     std::for_each(command_errors.cbegin(), command_errors.cend(),
