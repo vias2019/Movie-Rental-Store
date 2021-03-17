@@ -90,13 +90,25 @@ void InventoryFile::parseFile()
         }
         else if (std::regex_search(line, classic_match, classic_pattern))
         {
+            int releaseMonth = stoi(classic_match[5]);
+
+            // Check for an invalid release month.
+            if (releaseMonth < 1 || 12 < releaseMonth)
+            {
+                error_list.emplace_back(
+                    std::make_shared<std::runtime_error>(
+                        "[Invalid inventory item] " + line
+                ));
+                continue;
+            }
+
             file_inventory.addStock(
                 DVD(std::shared_ptr<Movie>{new ClassicMovie(
                     "classic",              // .genre
                     classic_match[2],       // .director
                     classic_match[3],       // .title
                     stoi(classic_match[6]), // .releaseYear
-                    stoi(classic_match[5]), // .releaseMonth
+                    releaseMonth, 	    // .releaseMonth
                     classic_match[4]        // .actor
                 )}),
                 stoi(classic_match[1])      // .quantity

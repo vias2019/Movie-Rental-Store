@@ -169,12 +169,20 @@ DVD CommandFile::parseDVD(const std::string& line)
     }
     else if (std::regex_search(line, classic_match, classic_pattern))
     {
+        int releaseMonth = stoi(classic_match[1]);
+
+        // Check for a valid movie release month.
+        if (releaseMonth < 1 || 12 < releaseMonth)
+        {
+            throw std::runtime_error("Invalid dvd release month");
+        }
+
         return DVD{std::shared_ptr<Movie>{new ClassicMovie(
             "classic",              // .genre
             "",                     // .director
             "",                     // .title
             stoi(classic_match[2]), // .releaseYear
-            stoi(classic_match[1]), // .releaseMonth
+            releaseMonth,           // .releaseMonth
             classic_match[3]        // .actor
         )}};
     }
